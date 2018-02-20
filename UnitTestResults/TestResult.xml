@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\obj\Debug\MVCAppTest.dll" total="0" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-02-11" time="17:33:32">
+  <environment nunit-version="3.6.0.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.10586.0" platform="Win32NT" cwd="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest" machine-name="IE11LTB81XTC2" user="H265456" user-domain="GLOBAL" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\obj\Debug\MVCAppTest.dll" executed="True" result="Failure" success="False" time="0.000" asserts="">
+    <properties>
+      <property name="_SKIPREASON" value="File not found: C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\obj\Debug\MVCAppTest.dll" />
+    </properties>
+    <reason>
+      <message><![CDATA[File not found: C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\obj\Debug\MVCAppTest.dll]]></message>
+    </reason>
+    <results />
+  </test-suite>
+</test-results>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<httpSample t="2522" lt="2522" ts="1518365650930" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="16" lt="16" ts="1518365671928" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="20" lt="19" ts="1518365740685" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="15" lt="15" ts="1518365753391" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="15" lt="14" ts="1518365796310" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="15" lt="15" ts="1518365808268" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="15" lt="15" ts="1518365859702" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="7737" lt="7737" ts="1518367814777" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="37" lt="37" ts="1518368892666" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="6951" lt="6951" ts="1518368917882" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="6775" lt="6775" ts="1518370094895" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+<httpSample t="7280" lt="7280" ts="1518370165421" s="true" lb="Visit MVCAPP" rc="200" rm="OK" tn="Users 1-1" dt="text" by="2504"/>
+
+</testResults>

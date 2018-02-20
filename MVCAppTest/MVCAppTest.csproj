@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="Nunit3" />
+  <UsingTask AssemblyFile="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\tools\net40\MSBuild.ExtensionPack.dll" TaskName="MSBuild.ExtensionPack.CodeQuality.FxCop" />
+  <UsingTask AssemblyFile="$(MSBuildStartupDirectory)\MVCApp\packages\OpenCover.4.6.519\MSBuild\OpenCover.MSBuild.dll" TaskName="OpenCover.MSBuild.OpenCover" />
+  <UsingTask TaskName="ReportGenerator" AssemblyFile="..\MVCApp\packages\ReportGenerator.3.1.0-beta4\tools\ReportGenerator.exe" />
+  <Import Project="..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8EDF4429-251A-416D-BB68-93F227191BCF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MVCAppTest</RootNamespace>
+    <AssemblyName>MVCAppTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <BaseDirectory>..\</BaseDirectory>
+    <IntegrationTestsDirectory>$(BaseDirectory)IntegrationTests\</IntegrationTestsDirectory>
+    <JMeterTestsDirectory>$(IntegrationTestsDirectory)JMeterTests\</JMeterTestsDirectory>
+    <TestResultsDirectory>..\IntegrationTests\JMeterTestResults\</TestResultsDirectory>
+    <JMeterToolPath>..\ExternalTools\apache-jmeter-2.6\bin\jmeter.bat</JMeterToolPath>
+  </PropertyGroup>
+
+ <PropertyGroup>
+    <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
+    <NUnitResultsFile>..\UnitTestResults\TestResult.xml</NUnitResultsFile>
+    <StyleCopOverrideSettingsFile>Settings.StyleCop</StyleCopOverrideSettingsFile>
+    <BuildToolsStyleCopVersion>4.7.44.0</BuildToolsStyleCopVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NUnitResultsFolder>UnitTestResults</NUnitResultsFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <UnitTestReportFolder>UnitTestReport</UnitTestReportFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <FxCopReportFolder>..\FxCopReport</FxCopReportFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IntermediateOutputPath>..\StyleCopResult</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- StyleCop -->
+    <StyleCopOutputToConsole>false</StyleCopOutputToConsole>
+    <!-- Doxygen -->
+    <DoxygenExePath>..\MVCApp\packages\Doxygen.1.8.13\tools\doxygen.exe</DoxygenExePath>
+    <DoxygenConfigFile>..\MVCApp\doxygen.config</DoxygenConfigFile>
+    <!-- Simian -->
+    <SimianExeToolPath>..\ExternalTools\simian-2.5.8\tools\simian-2.5.8.exe</SimianExeToolPath>
+    <SimianOutputFile>..\SimianOutputFile\simian-output.xml</SimianOutputFile>
+    <SimianCommand>"$(SimianExeToolPath)" -formatter=xml:"$(SimianOutputFile)"  -excludes=**/*. -excludes=**/*.Designer.cs  -threshold=10 **/*.cs </SimianCommand>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CodeCoverageResultsFolder>CoverageResults</CodeCoverageResultsFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CodeCoverageReportFolder>..\CoverageReport</CodeCoverageReportFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CoverageHistoryDirectory>..\CoverageHistory</CoverageHistoryDirectory>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CoverageFilesPattern>..\$(CodeCoverageResultsFolder)\*coverage-results.xml</CoverageFilesPattern>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TestsBuildOutputFolder>$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug</TestsBuildOutputFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\DotNetOpenAuth.AspNet.4.3.4.13329\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\DotNetOpenAuth.OAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\DotNetOpenAuth.OAuth.Consumer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\DotNetOpenAuth.OpenId.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.6.16.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\HtmlAgilityPack.1.6.16\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Machine.Specifications, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Machine.Specifications.0.12.0\lib\net45\Machine.Specifications.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.WebPages.OAuth.3.2.3\lib\net45\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\NUnit.Engine.3.8.0\lib\Mono.Cecil.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit-agent, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\NUnit.Engine.3.8.0\lib\nunit-agent.exe</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit-agent-x86, Version=3.8.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\MVCApp\packages\NUnit.Engine.3.8.0\lib\nunit-agent-x86.exe</HintPath>
+      <Private>True</Private>
+    </Reference>
+ 
+    <Reference Include="nunit.engine, Version=3.8.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MVCApp\packages\NUnit.Engine.3.8.0\lib\nunit.engine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.engine.api, Version=3.0.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\NUnit.Engine.Api.3.8.0\lib\nunit.engine.api.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Selenium.WebDriverBackedSelenium, Version=3.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Selenium.WebDriverBackedSelenium.3.9.1\lib\net45\Selenium.WebDriverBackedSelenium.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="WebDriver, Version=3.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Selenium.WebDriver.3.9.1\lib\net45\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Selenium.Support.3.9.1\lib\net45\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.WebPages.Data.3.2.3\lib\net45\WebMatrix.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\MVCApp\packages\Microsoft.AspNet.WebPages.WebData.3.2.3\lib\net45\WebMatrix.WebData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\RegisterControllerTests.cs" />
+    <Compile Include="Controllers\UITest\PageObjects\SimianTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controllers\UITest\PageObjects\LoginPage.cs" />
+    <Compile Include="Controllers\UITest\PageObjects\HomePage.cs" />
+    <Compile Include="Controllers\UITest\TestCases\WUITest.cs" />
+    <Compile Include="Controllers\UITest\TestCases\UITest.cs" />
+    <Compile Include="Controllers\UITest\Common\Driver.cs" />
+    <Compile Include="Controllers\UITest\TestCases\TestClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Scripts\jquery-3.3.1.min.map" />
+    <None Include="Scripts\jquery-3.3.1.slim.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\MVCApp\packages\Desktop.Analyzers.1.1.0\analyzers\dotnet\cs\Desktop.Analyzers.dll" />
+    <Analyzer Include="..\MVCApp\packages\Desktop.Analyzers.1.1.0\analyzers\dotnet\cs\Desktop.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.4.2.debug.js" />
+    <Content Include="Scripts\knockout-3.4.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\MSBuild.Extension.Pack.1.9.1\build\net40\MSBuild.Extension.Pack.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\NUnit3TestAdapter.3.9.0\build\net35\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.35.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.35.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.9.0\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.9.0\build\Selenium.WebDriver.IEDriver.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.9\build\Selenium.InternetExplorer.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.9\build\Selenium.InternetExplorer.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Import Project="..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\MVCApp\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
+  <Import Project="..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.35.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.ChromeDriver.2.35.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.9.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.WebDriver.IEDriver.3.9.0\build\Selenium.WebDriver.IEDriver.targets')" />
+  <Import Project="..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.9\build\Selenium.InternetExplorer.WebDriver.targets" Condition="Exists('..\MVCApp\packages\Selenium.InternetExplorer.WebDriver.3.9\build\Selenium.InternetExplorer.WebDriver.targets')" />
+  <Target Name="Test"   >
+    <Message Text="Test called" Importance="high" />
+    <Message Text="*** NUnit tests beginning...$(Platform) $(Configuration)" />
+    <ItemGroup>
+      <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools\*.dll" />
+    </ItemGroup>
+    <ItemGroup>
+      <MySourceItems Include="..\MVCAppTest\obj\Debug\MVCAppTest.dll;" />
+    </ItemGroup>
+    <Message Text="*** NUnit tests starting ..Creating Items" />
+    <CreateItem Include="@(MySourceItems)">
+      <Output TaskParameter="Include" ItemName="TestAssembly" />
+    </CreateItem>
+    <Message Text=" NUnit tests starting  Created Items" />
+    <Message Text=" SolutionProperties = @(TestAssembly)" />
+    <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+    <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+    <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
+    <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
+  </Target>
+  <Target Name="TestResultsReport" DependsOnTargets="Test">
+    <Message Text="TestResultsReport in Test Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" Importance="high" />
+    <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
+    <Message Text="TestResultsReport Reportunit Called " />
+  </Target>
+  
+  <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
+    <Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " Importance="high" />
+    <Exec Command="..\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:Path64 -enableperformancecounters -searchdirs:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools&quot; -targetdir:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools&quot; -target:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /version /trace=Debug /config=Debug /result=..\$(NUnitResultsFolder)\TestResult.xml&quot;    -filter:&quot;+[*]*&quot; -output:&quot;..\CoverageResults\coverage-results.xml&quot;" ContinueOnError="false" />
+    <Message Text="CoverageOC Completed " />
+  </Target>
+  <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC">
+    <Message Text="CodeCoverageReport Test ######## called CodeCoverageReportFolder: $(CodeCoverageReportFolder) CoverageHistoryDirectory: $(CoverageHistoryDirectory) SourceDirectories :@(SourceDirectories)" Importance="high" />
+    <ItemGroup>
+      <CoverageFiles Include="$(CoverageFilesPattern)  " />
+    </ItemGroup>
+    <ItemGroup>
+      <SourceDirectories Include="$(MSBuildProjectDirectory)" />
+    </ItemGroup>
+    <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(CodeCoverageReportFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
+    <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
+  </Target>
+  <!--
+  
+   <Target Name="AnalyzeWithFxCop">
+      <ItemGroup>
+        <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
+        <ProjectsToAnalyze Include="..\MVCAppTest\MVCAppTest.csproj" />
+      </ItemGroup>
+      <Message  Importance="high" Text="AnalyzeWithFxCop generated 1%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll" />
+      
+      <ItemGroup>
+        <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll')"/> 
+        </ItemGroup>
+      <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(FxCopReportFolder)\FxCopReport.html" Rules="C:\Software\Fxcop10.0\Rules" FxCopPath="C:\Software\Fxcop10.0\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="C:\Software\Fxcop10.0\Xml\FxCopReport.xsl" DependencyDirectories="$(&#xD;&#xA;Directory)" />
+    </Target>
+    
+    -->
+  <!-- Generates Apidoc -->
+  <Target Name="ApiDoc">
+    <Message Importance="high" Text="Starting the ApiDoc in Test ###########" />
+    <Exec Command="$(DoxygenExePath) $(DoxygenConfigFile)" ContinueOnError="false" />
+  </Target>
+  <!-- The CodeDuplicated Target, runs simian code duplication detection tool-->
+  <Target Name="CodeDuplicated">
+    <Message Importance="high" Text="Starting the CodeDuplicated in Test ###########" />
+    <Message Text="$(SimianCommand)" />
+    <Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
+  </Target>
+  <Target Name="AnalyzeWithSonar">
+    <Message Text="Starting the AnalyzeWithSonar in Test ###########" Importance="high" />
+    <ItemGroup>
+      <_SolutionsToAnalyze Include="..\MVCApp\MVCApp.sln" />
+      <!-- if none of the above exist, look for any solution -->
+      <_SolutionsToAnalyze Include="$(CSharpSourceDirectory)**\*.sln" Condition=" @(_SolutionsToAnalyze) == '' " />
+      <SolutionsToAnalyze Include="%(_SolutionsToAnalyze.RelativeDir)%(_SolutionsToAnalyze.Filename)%(_SolutionsToAnalyze.Extension)">
+        <ProjectName>MVCApp</ProjectName>
+      </SolutionsToAnalyze>
+    </ItemGroup>
+    <Message Text="SonarRunnerPath $(SonarRunnerPath) CSharpSourceDirectory $(CSharpSourceDirectory) SonarConnectionParameters $(SonarConnectionParameters)" Importance="high" />
+    <PropertyGroup>
+      <ExcludeFromCoverage>@(AssembliesToExludeFromCoverage -> '%(Filename)', ',')</ExcludeFromCoverage>
+      <SonarConnectionParameters>/d:sonar.host.url="http://localhost:9000" /d: sonar.login="f357980387f466d60a61bf73e0fc726359d6a28f" /d:sonar.fxcop.mode="skip" /d: sonar.sources="."</SonarConnectionParameters>
+      <SonarConnectionParameters Condition=" $(SonarProfile) != '' ">$(SonarConnectionParameters) /d:sonar.profile="$(SonarProfile)"</SonarConnectionParameters>
+    </PropertyGroup>
+    <Message Text="Starting Sonar " Importance="high" />
+    <Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe $(SonarConnectionParameters)  /d:sonar.projectVersion=2 /d:sonar.projectKey=&quot;mvctest1&quot; /d:sonar.projectName=&quot;mvctest&quot; /d:sonar.language=cs /d:sonar.dotnet.buildConfigurations=$(Configuration) /d:sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; /d:csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot; /d:sonar.gallio.installDirectory=$(GallioPath) /d:sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
+  </Target>
+  <Target Name="RunSpecs">
+    <Message Importance="high" Text="Starting the RunSpecs in Test ###########" />
+    <PropertyGroup>
+      <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i "web" --html "..\MachineSpecs" obj\Debug\MVCApp.dll </MSpecCommand>
+    </PropertyGroup>
+    <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)" />
+    <Exec Command="$(MSpecCommand)" />
+  </Target>
+  <Target Name="RunJMeterTests" DependsOnTargets="BeforeRunJMeterTests;CoreRunJMeterTests" />
+  <Target Name="BeforeRunJMeterTests">
+    <Message Text="Starting the BeforeRunJMeterTests in Test ###########" Importance="high" />
+    <Message Text="Starting the BeforeRunJMeterTests in Test @(JMeterTestProjects)" Importance="high" />
+    <ItemGroup>
+      <JMeterTestProjects Remove="@(JMeterTestProjects)" />
+      <JMeterTestProjects Include="$(JMeterTestsDirectory)**\*.jmx" />
+    </ItemGroup>
+    <Message Text="Starting the BeforeRunJMeterTests in Test $(JMeterTestsDirectory)" Importance="high" />
+    <Message Text="Starting the BeforeRunJMeterTests in Test %(JMeterTestProjects.FullPath)" Importance="high" />
+  </Target>
+  <Target Name="CoreRunJMeterTests" Inputs="..\IntegrationTests\JMeterTests\jmetertest.jmx" Outputs="AlwaysExecute">
+    <Message Text="Starting the CoreRunJMeterTests in Test $(BaseDirectory)" Importance="high" />
+    <Message Text="Starting the CoreRunJMeterTests in Test $(IntegrationTestsDirectory)" Importance="high" />
+    <Message Text="Starting the CoreRunJMeterTests in Test $(JMeterTestsDirectory)" Importance="high" />
+    <Message Text="Starting the CoreRunJMeterTests in Test $(BuildDirectory)" Importance="high" />
+    <Message Text="Starting the CoreRunJMeterTests in Test @(BaseDirectory)" Importance="high" />
+    <Message Text=" JMeterTestOutputFileLocation $(JMeterTestOutputFileLocation)" Importance="high" />
+    <Message Text="  JMeterTestLogFileLocation) $(JMeterTestLogFileLocation) " Importance="high" />
+    <PropertyGroup>
+      <JMeterTestLogFileLocation>$(TestResultsDirectory)test.log</JMeterTestLogFileLocation>
+      <JMeterTestOutputFileLocation>$(TestResultsDirectory)test.jtl</JMeterTestOutputFileLocation>
+    </PropertyGroup>
+    <Message Text="log file  $([System.IO.Path]::GetFullPath('$(TestResultsDirectory)test.log'))" Importance="high" />
+    <Message Text="JMeterToolPath  $(JMeterToolPath)" Importance="high" />
+    <!-- start non-gui version of jmeter and pass jmx file, test output location and log file output location 
+  	fOR VERBOSE ADD THIS  -s -Dsun.rmi.loader.logLevel=verbose
+  	-->
+    <Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation)" ContinueOnError="true" />
+    <Message Text=" Jmeter test completed " Importance="high" />
+  </Target>
+  <Target Name="BeforeBuild">
+    <!-- Remove obj folder -->
+    <Message Importance="High" Text="BeforeBuild Test :: BaseIntermediateOutputPath dir is $(BaseIntermediateOutputPath)" />
+    <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
+    <!-- Remove bin folder -->
+    <Message Importance="High" Text="BeforeBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
+    <RemoveDir Directories="$(BaseOutputPath)" />
+  </Target>
+  <Target Name="AfterBuild">
+    <Message Importance="High" Text="AfterBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
+    <Message Text="AfterBuild called " Importance="high" />
+     
+        <CallTarget Targets="ApiDoc" />
+        <CallTarget Targets="CodeDuplicated" />
+        <CallTarget Targets="CodeCoverageReport" />
+           
+ 
+    <CallTarget Targets="RunJMeterTests" />
+  </Target>
+  <Import Project="..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+</Project>

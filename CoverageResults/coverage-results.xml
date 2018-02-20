@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CoverageSession xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Summary numSequencePoints="0" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="0" maxCyclomaticComplexity="0" minCyclomaticComplexity="0" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="0" />
+  <Modules>
+    <Module skippedDueTo="Filter" hash="9A-0A-84-20-7F-CD-8C-82-7C-94-6E-F8-0B-14-92-43-4A-B3-81-D7">
+      <ModulePath>C:\windows\Microsoft.Net\assembly\GAC_64\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll</ModulePath>
+      <ModuleTime>2018-01-23T06:48:47.8791082Z</ModuleTime>
+      <ModuleName>mscorlib</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="86-E9-3D-3D-7C-09-09-11-61-67-42-C6-1E-4B-75-FF-C4-1C-03-96">
+      <ModulePath>C:\Projects\ASP.NET-master\CICDSolution\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools\nunit3-console.exe</ModulePath>
+      <ModuleTime>2018-01-27T05:57:14Z</ModuleTime>
+      <ModuleName>nunit3-console</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="Filter" hash="AB-69-36-06-FC-95-2A-FE-49-56-2F-FE-00-ED-41-A6-70-40-C5-58">
+      <ModulePath>C:\windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll</ModulePath>
+      <ModuleTime>2018-01-23T06:48:53.6762736Z</ModuleTime>
+      <ModuleName>System</ModuleName>
+      <Classes />
+    </Module>
+    <Module skippedDueTo="MissingPdb" hash="C1-08-CD-F2-59-9C-E6-0B-62-F9-09-43-74-9F-8D-57-9D-A9-93-31">
+      <ModulePath>C:\Projects\ASP.NET-master\CICDSolution\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools\nunit.engine.api.dll</ModulePath>
+      <ModuleTime>2018-01-27T05:57:14Z</ModuleTime>
+      <ModuleName>nunit.engine.api</ModuleName>
+      <Classes />
+    </Module>
+  </Modules>
+</CoverageSession>
