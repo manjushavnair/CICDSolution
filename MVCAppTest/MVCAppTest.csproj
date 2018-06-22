@@ -42,6 +42,11 @@
     <IntegrationTestsDirectory>$(BaseDirectory)IntegrationTests\</IntegrationTestsDirectory>
     <JMeterTestsDirectory>$(IntegrationTestsDirectory)JMeterTests\</JMeterTestsDirectory>
     <TestResultsDirectory>..\IntegrationTests\JMeterTestResults\</TestResultsDirectory>
+    <TestResultsLogDirectory>..\IntegrationTests\JMeterTestLog\</TestResultsLogDirectory>
+    
+    <TestReportDirectory>..\IntegrationTests\JMeterReport\</TestReportDirectory>
+    
+    
     <JMeterToolPath>..\ExternalTools\apache-jmeter-2.6\bin\jmeter.bat</JMeterToolPath>
   </PropertyGroup>
   <PropertyGroup>
@@ -485,15 +490,16 @@
     <Message Text=" JMeterTestOutputFileLocation $(JMeterTestOutputFileLocation)" Importance="high" />
     <Message Text="  JMeterTestLogFileLocation) $(JMeterTestLogFileLocation) " Importance="high" />
     <PropertyGroup>
-      <JMeterTestLogFileLocation>$(TestResultsDirectory)test.log</JMeterTestLogFileLocation>
-      <JMeterTestOutputFileLocation>$(TestResultsDirectory)test.jtl</JMeterTestOutputFileLocation>
+      <JMeterTestReportFileLocation>$(TestReportDirectory)</JMeterTestReportFileLocation>
+      <JMeterTestLogFileLocation>$(TestResultsLogDirectory)test.log</JMeterTestLogFileLocation>
+      <JMeterTestOutputFileLocation>$(TestResultsDirectory)test.csv</JMeterTestOutputFileLocation>
     </PropertyGroup>
     <Message Text="log file  $([System.IO.Path]::GetFullPath('$(TestResultsDirectory)test.log'))" Importance="high" />
     <Message Text="JMeterToolPath  $(JMeterToolPath)" Importance="high" />
     <!-- start non-gui version of jmeter and pass jmx file, test output location and log file output location 
   	fOR VERBOSE ADD THIS  -s -Dsun.rmi.loader.logLevel=verbose
   	-->
-    <Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation)" ContinueOnError="false" />
+    <Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation) -e -o $(TestReportDirectory)" ContinueOnError="false" />
     <Message Text=" Jmeter test completed " Importance="high" />
   </Target>
   <Target Name="BeforeBuild">
