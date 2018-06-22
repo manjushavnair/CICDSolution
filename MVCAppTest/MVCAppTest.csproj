@@ -508,10 +508,11 @@
     <Message Importance="High" Text="AfterBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
     <Message Text="AfterBuild called " Importance="high" />
     <CallTarget Targets="ApiDoc" />
-    <CallTarget Targets="AnalyzeWithSonar" />
+
     <CallTarget Targets="AnalyzeWithFxCop" />
     <CallTarget Targets="CodeDuplicated" />
     <CallTarget Targets="CodeCoverageReport" />
+        <CallTarget Targets="AnalyzeWithSonar" />
     <CallTarget Targets="RunJMeterTests" />
   </Target>
   <Import Project="..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
