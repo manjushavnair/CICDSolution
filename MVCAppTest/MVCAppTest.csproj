@@ -364,7 +364,7 @@
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools\*.dll" />
     </ItemGroup>
     <ItemGroup>
-      <MySourceItems Include="..\MVCAppTest\obj\Debug\MVCAppTest.dll;" />
+      <MySourceItems Include="..\MVCAppTest\bin\Debug\MVCAppTest.dll;" />
     </ItemGroup>
     <Message Text="*** NUnit tests starting ..Creating Items" />
     <CreateItem Include="@(MySourceItems)">
@@ -375,7 +375,11 @@
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
     <!--
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+    
     -->
+    
+      <Message Text=" MySourceItems = $(MySourceItems)" />
+  
     
      <Message Text=" TestAssembly = $(TestAssembly)" />
      <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
