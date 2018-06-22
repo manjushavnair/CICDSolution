@@ -410,7 +410,7 @@
       <ItemGroup>
         <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll')"/> 
         </ItemGroup>
-      <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(FxCopReportFolder)\FxCopReport.html" Rules="C:\Software\Fxcop10.0\Rules" FxCopPath="C:\Software\Fxcop10.0\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="C:\Software\Fxcop10.0\Xml\FxCopReport.xsl" DependencyDirectories="$(&#xD;&#xA;Directory)" />
+      <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(FxCopReportFolder)\FxCopReport.html" Rules="..\ExternalTools\fxcop\Rules" FxCopPath="..\ExternalTools\fxcop\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="..\ExternalTools\fxcop\Xml\FxCopReport.xsl" DependencyDirectories="$(&#xD;&#xA;Directory)" />
     </Target>
     
     -->
