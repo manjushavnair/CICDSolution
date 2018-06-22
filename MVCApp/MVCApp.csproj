@@ -367,7 +367,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>60638</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/MVCApp</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
@@ -395,7 +395,6 @@
     <Error Condition="!Exists('packages\Selenium.InternetExplorer.WebDriver.3.9\build\Selenium.InternetExplorer.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.InternetExplorer.WebDriver.3.9\build\Selenium.InternetExplorer.WebDriver.targets'))" />
   </Target>
   <Target Name="BeforeBuild">
-    
     <!-- Remove obj folder -->
     <Message Importance="High" Text="BeforeBuild Dev :: BaseIntermediateOutputPath dir is $(BaseIntermediateOutputPath)" />
     <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
@@ -403,9 +402,7 @@
     <Message Importance="High" Text="BeforeBuild Dev :: BaseOutputPath dir is $(BaseOutputPath)" />
     <RemoveDir Directories="$(BaseOutputPath)" />
     <Message Importance="High" Text="Nuget " />
-    
-     <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
-
+    <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
   </Target>
   <Target Name="AfterBuild">
     <Message Importance="High" Text="AfterBuild Dev :: BaseOutputPath dir is $(BaseOutputPath)" />
