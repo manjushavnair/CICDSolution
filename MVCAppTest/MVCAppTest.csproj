@@ -512,7 +512,7 @@
     <CallTarget Targets="AnalyzeWithFxCop" />
     <CallTarget Targets="CodeDuplicated" />
     <CallTarget Targets="CodeCoverageReport" />
-        <CallTarget Targets="AnalyzeWithSonar" />
+       <!-- <CallTarget Targets="AnalyzeWithSonar" /> -->
     <CallTarget Targets="RunJMeterTests" />
   </Target>
   <Import Project="..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
