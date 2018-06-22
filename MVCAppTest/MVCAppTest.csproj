@@ -411,7 +411,7 @@
     <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(CodeCoverageReportFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
   </Target>
-  <!--
+   
   
    <Target Name="AnalyzeWithFxCop">
       <ItemGroup>
@@ -426,7 +426,7 @@
       <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(FxCopReportFolder)\FxCopReport.html" Rules="..\ExternalTools\fxcop\Rules" FxCopPath="..\ExternalTools\fxcop\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="..\ExternalTools\fxcop\Xml\FxCopReport.xsl" DependencyDirectories="$(&#xD;&#xA;Directory)" />
     </Target>
     
-    -->
+   
   <!-- Generates Apidoc -->
   <Target Name="ApiDoc">
     <Message Importance="high" Text="Starting the ApiDoc in Test ###########" />
