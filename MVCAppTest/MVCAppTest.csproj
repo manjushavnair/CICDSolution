@@ -392,7 +392,7 @@
   
   <Target Name="TestResultsReport" DependsOnTargets="Test">
     <Message Text="TestResultsReport in Test Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" Importance="high" />
-    <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.ex &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
+    <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
     <Message Text="TestResultsReport Reportunit Called " />
   </Target>
   <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
