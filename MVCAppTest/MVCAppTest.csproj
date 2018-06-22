@@ -373,10 +373,19 @@
     <Message Text=" NUnit tests starting  Created Items" />
     <Message Text=" SolutionProperties = @(TestAssembly)" />
     <Message Text=" MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+    <!--
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+    -->
+    
+     <Message Text=" TestAssembly = $(TestAssembly)" />
+     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
+   
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
     <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
+    
+    
   </Target>
+  
   <Target Name="TestResultsReport" DependsOnTargets="Test">
     <Message Text="TestResultsReport in Test Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" Importance="high" />
     <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
