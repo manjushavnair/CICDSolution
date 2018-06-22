@@ -402,7 +402,7 @@
     <Message Importance="High" Text="BeforeBuild Dev :: BaseOutputPath dir is $(BaseOutputPath)" />
     <RemoveDir Directories="$(BaseOutputPath)" />
     <Message Importance="High" Text="Nuget " />
-    <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="true" />
+    <Exec Command="..\.nuget\nuget restore MVCApp.sln" ContinueOnError="false" />
   </Target>
   <Target Name="AfterBuild">
     <Message Importance="High" Text="AfterBuild Dev :: BaseOutputPath dir is $(BaseOutputPath)" />
