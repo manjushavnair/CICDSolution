@@ -86,7 +86,7 @@
     <CoverageFilesPattern>..\$(CodeCoverageResultsFolder)\*coverage-results.xml</CoverageFilesPattern>
   </PropertyGroup>
   <PropertyGroup>
-    <TestsBuildOutputFolder>$(MSBuildStartupDirectory)\MVCAppTests\obj\Debug</TestsBuildOutputFolder>
+    <TestsBuildOutputFolder>$(MSBuildStartupDirectory)\MVCAppTests\bin\Debug</TestsBuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
@@ -418,10 +418,10 @@
         <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
         <ProjectsToAnalyze Include="..\MVCAppTest\MVCAppTest.csproj" />
       </ItemGroup>
-      <Message  Importance="high" Text="AnalyzeWithFxCop generated 1%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\$(Configuration)\%(ProjectsToAnalyze.Filename).dll" />
+      <Message  Importance="high" Text="AnalyzeWithFxCop generated 1%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll" />
       
       <ItemGroup>
-        <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)obj\Debug\%(ProjectsToAnalyze.Filename).dll')"/> 
+        <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\Debug\%(ProjectsToAnalyze.Filename).dll')"/> 
         </ItemGroup>
       <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(FxCopReportFolder)\FxCopReport.html" Rules="..\ExternalTools\fxcop\Rules" FxCopPath="..\ExternalTools\fxcop\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="..\ExternalTools\fxcop\Xml\FxCopReport.xsl" DependencyDirectories="$(&#xD;&#xA;Directory)" />
     </Target>
@@ -460,7 +460,7 @@
   <Target Name="RunSpecs">
     <Message Importance="high" Text="Starting the RunSpecs in Test ###########" />
     <PropertyGroup>
-      <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i "web" --html "..\MachineSpecs" obj\Debug\MVCApp.dll </MSpecCommand>
+      <MSpecCommand>..\MVCApp\packages\Machine.Specifications.Runner.Console.0.9.3\tools\mspec-clr4.exe -s -t -i "web" --html "..\MachineSpecs" bin\Debug\MVCApp.dll </MSpecCommand>
     </PropertyGroup>
     <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)" />
     <Exec Command="$(MSpecCommand)" />
