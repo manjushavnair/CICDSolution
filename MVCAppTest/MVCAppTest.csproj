@@ -467,14 +467,14 @@
   </Target>
   <Target Name="RunJMeterTests" DependsOnTargets="BeforeRunJMeterTests;CoreRunJMeterTests" />
   <Target Name="BeforeRunJMeterTests">
-    <Message Text="Starting the BeforeRunJMeterTests in Test ###########" Importance="high" />
-    <Message Text="Starting the BeforeRunJMeterTests in Test @(JMeterTestProjects)" Importance="high" />
+    <Message Text="Starting the BeforeRunJMeterTests in Test1 ###########" Importance="high" />
+    <Message Text="Starting the BeforeRunJMeterTests in JMeterTestProjects @(JMeterTestProjects)" Importance="high" />
     <ItemGroup>
       <JMeterTestProjects Remove="@(JMeterTestProjects)" />
       <JMeterTestProjects Include="$(JMeterTestsDirectory)**\*.jmx" />
     </ItemGroup>
-    <Message Text="Starting the BeforeRunJMeterTests in Test $(JMeterTestsDirectory)" Importance="high" />
-    <Message Text="Starting the BeforeRunJMeterTests in Test %(JMeterTestProjects.FullPath)" Importance="high" />
+    <Message Text="Starting the BeforeRunJMeterTests in JMeterTestsDirectory $(JMeterTestsDirectory)" Importance="high" />
+    <Message Text="Starting the BeforeRunJMeterTests in JMeterTestProjects Fullpath %(JMeterTestProjects.FullPath)" Importance="high" />
   </Target>
   <Target Name="CoreRunJMeterTests" Inputs="..\IntegrationTests\JMeterTests\jmetertest.jmx" Outputs="AlwaysExecute">
     <Message Text="Starting the CoreRunJMeterTests in Test $(BaseDirectory)" Importance="high" />
@@ -508,6 +508,8 @@
     <Message Importance="High" Text="AfterBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
     <Message Text="AfterBuild called " Importance="high" />
     <CallTarget Targets="ApiDoc" />
+    <CallTarget Targets="AnalyzeWithSonar" />
+    <CallTarget Targets="AnalyzeWithFxCop" />
     <CallTarget Targets="CodeDuplicated" />
     <CallTarget Targets="CodeCoverageReport" />
     <CallTarget Targets="RunJMeterTests" />
