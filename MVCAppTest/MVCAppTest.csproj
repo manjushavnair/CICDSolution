@@ -493,7 +493,7 @@
     <!-- start non-gui version of jmeter and pass jmx file, test output location and log file output location 
   	fOR VERBOSE ADD THIS  -s -Dsun.rmi.loader.logLevel=verbose
   	-->
-    <Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation)" ContinueOnError="true" />
+    <Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation)" ContinueOnError="false" />
     <Message Text=" Jmeter test completed " Importance="high" />
   </Target>
   <Target Name="BeforeBuild">
