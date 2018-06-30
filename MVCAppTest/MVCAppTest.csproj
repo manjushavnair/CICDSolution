@@ -488,13 +488,13 @@
     <Message Text="Starting the CoreRunJMeterTests in Test $(BuildDirectory)" Importance="high" />
     <Message Text="Starting the CoreRunJMeterTests in Test @(BaseDirectory)" Importance="high" />
     <Message Text=" JMeterTestOutputFileLocation $(JMeterTestOutputFileLocation)" Importance="high" />
-    <Message Text="  JMeterTestLogFileLocation) $(JMeterTestLogFileLocation) " Importance="high" />
+    <Message Text="  JMeterTestLogFileLocation $(JMeterTestLogFileLocation) " Importance="high" />
     <PropertyGroup>
       <JMeterTestReportFileLocation>$(TestReportDirectory)</JMeterTestReportFileLocation>
       <JMeterTestLogFileLocation>$(TestResultsLogDirectory)test.log</JMeterTestLogFileLocation>
       <JMeterTestOutputFileLocation>$(TestResultsDirectory)</JMeterTestOutputFileLocation>
     </PropertyGroup>
-    <Message Text="log file  $([System.IO.Path]::GetFullPath('$(TestResultsDirectory)test.log'))" Importance="high" />
+    <Message Text="log file  $([System.IO.Path]::GetFullPath('$(TestResultsLogDirectory)test.log'))" Importance="high" />
     <Message Text="JMeterToolPath  $(JMeterToolPath)" Importance="high" />
     <!-- start non-gui version of jmeter and pass jmx file, test output location and log file output location 
   	fOR VERBOSE ADD THIS  -s -Dsun.rmi.loader.logLevel=verbose
