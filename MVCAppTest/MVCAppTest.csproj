@@ -370,6 +370,7 @@
     </ItemGroup>
     <ItemGroup>
       <MySourceItems Include="..\MVCAppTest\bin\Debug\MVCAppTest.dll;..\MVCAppTest\bin\Debug\MVCAppTest.pdb;" />
+      
     </ItemGroup>
     <Message Text="*** NUnit tests starting ..Creating Items" />
     <CreateItem Include="@(MySourceItems)">
