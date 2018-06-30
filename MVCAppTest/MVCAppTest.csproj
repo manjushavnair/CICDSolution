@@ -492,7 +492,7 @@
     <PropertyGroup>
       <JMeterTestReportFileLocation>$(TestReportDirectory)</JMeterTestReportFileLocation>
       <JMeterTestLogFileLocation>$(TestResultsLogDirectory)test.log</JMeterTestLogFileLocation>
-      <JMeterTestOutputFileLocation>$(TestResultsDirectory)test.csv</JMeterTestOutputFileLocation>
+      <JMeterTestOutputFileLocation>$(TestResultsDirectory)</JMeterTestOutputFileLocation>
     </PropertyGroup>
     <Message Text="log file  $([System.IO.Path]::GetFullPath('$(TestResultsDirectory)test.log'))" Importance="high" />
     <Message Text="JMeterToolPath  $(JMeterToolPath)" Importance="high" />
@@ -504,9 +504,10 @@
   </Target>
   
 <Target Name="JMeterTestReports"  >
-    <Exec Command="$(JMeterToolPath) -g   $(JMeterTestOutputFileLocation) -o $(JMeterTestReportFileLocation)  " ContinueOnError="false" />
+<Message Text=" Jmeter test report creations completed $(JMeterToolPath) -g $(JMeterTestOutputFileLocation) -o $(JMeterTestReportFileLocation)"  Importance="high" />
+
+    <Exec Command="$(JMeterToolPath) -g $(JMeterTestOutputFileLocation) -o $(JMeterTestReportFileLocation)  " ContinueOnError="false" />
 	
-<Message Text=" Jmeter test report creations completed " Importance="high" />
 </Target>
   
   <Target Name="BeforeBuild">
