@@ -502,6 +502,13 @@
     <Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation) " ContinueOnError="false" />
     <Message Text=" Jmeter test completed " Importance="high" />
   </Target>
+  
+<Target Name="JMeterTestReports"  >
+    <Exec Command="$(JMeterToolPath) -g   $(JMeterTestOutputFileLocation) -o $(JMeterTestReportFileLocation)  " ContinueOnError="false" />
+	
+<Message Text=" Jmeter test report creations completed " Importance="high" />
+</Target>
+  
   <Target Name="BeforeBuild">
     <!-- Remove obj folder -->
     <Message Importance="High" Text="BeforeBuild Test :: BaseIntermediateOutputPath dir is $(BaseIntermediateOutputPath)" />
@@ -520,6 +527,9 @@
     <CallTarget Targets="CodeCoverageReport" />
        <!-- <CallTarget Targets="AnalyzeWithSonar" /> -->
     <CallTarget Targets="RunJMeterTests" />
+    <CallTarget Targets="JMeterTestReports" />
+    
+    
   </Target>
   <Import Project="..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>
