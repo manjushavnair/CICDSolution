@@ -41,7 +41,7 @@
     <BaseDirectory>..\</BaseDirectory>
     <IntegrationTestsDirectory>$(BaseDirectory)IntegrationTests\</IntegrationTestsDirectory>
     <JMeterTestsDirectory>$(IntegrationTestsDirectory)JMeterTests\</JMeterTestsDirectory>
-    <TestResultsDirectory>..\IntegrationTests\JMeterTestResults\</TestResultsDirectory>
+    <TestResultsDirectory>..\IntegrationTests\JMeterTestResults\test.jtl</TestResultsDirectory>
     <TestResultsLogDirectory>..\IntegrationTests\JMeterTestLog\</TestResultsLogDirectory>
     
     <TestReportDirectory>..\IntegrationTests\JMeterReport</TestReportDirectory>
