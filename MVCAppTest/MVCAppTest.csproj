@@ -369,7 +369,7 @@
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools\*.dll" />
     </ItemGroup>
     <ItemGroup>
-      <MySourceItems Include="..\MVCAppTest\bin\Debug\MVCAppTest.dll;" />
+      <MySourceItems Include="..\MVCAppTest\bin\Debug\MVCAppTest.dll;..\MVCAppTest\bin\Debug\MVCAppTest.pdb;" />
     </ItemGroup>
     <Message Text="*** NUnit tests starting ..Creating Items" />
     <CreateItem Include="@(MySourceItems)">
