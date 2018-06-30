@@ -520,17 +520,18 @@
     <RemoveDir Directories="$(BaseOutputPath)" />
   </Target>
   <Target Name="AfterBuild">
-    <Message Importance="High" Text="AfterBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
-    <Message Text="AfterBuild called " Importance="high" />
-    <CallTarget Targets="ApiDoc" />
+		<Message Importance="High" Text="AfterBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
+		<Message Text="AfterBuild called " Importance="high" />
+		<CallTarget Targets="ApiDoc" />
 
-    <CallTarget Targets="AnalyzeWithFxCop" />
-    <CallTarget Targets="CodeDuplicated" />
-    <CallTarget Targets="CodeCoverageReport" />
-       <!-- <CallTarget Targets="AnalyzeWithSonar" /> -->
-    <CallTarget Targets="RunJMeterTests" />
-   <!-- <CallTarget Targets="JMeterTestReports" /> -->
-    
+		<CallTarget Targets="AnalyzeWithFxCop" />
+		<CallTarget Targets="CodeDuplicated" />
+		<CallTarget Targets="CodeCoverageReport" />
+		 
+		<CallTarget Targets="RunJMeterTests" />
+		  <CallTarget Targets="AnalyzeWithSonar" /> 
+		<!-- <CallTarget Targets="JMeterTestReports" /> -->
+
     
   </Target>
   <Import Project="..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
