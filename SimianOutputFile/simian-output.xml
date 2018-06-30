@@ -11,6 +11,6 @@ Simian is not free unless used solely for non-commercial or evaluation purposes.
             <block sourceFile="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\PageObjects\HomePage.cs" startLineNumber="11" endLineNumber="37"/>
             <block sourceFile="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\PageObjects\SimianTest.cs" startLineNumber="12" endLineNumber="38"/>
         </set>
-        <summary duplicateFileCount="2" duplicateLineCount="26" duplicateBlockCount="2" totalFileCount="9" totalRawLineCount="512" totalSignificantLineCount="161" processingTime="352"/>
+        <summary duplicateFileCount="2" duplicateLineCount="26" duplicateBlockCount="2" totalFileCount="9" totalRawLineCount="512" totalSignificantLineCount="161" processingTime="369"/>
     </check>
 </simian>

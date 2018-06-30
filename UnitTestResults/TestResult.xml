@@ -1,15 +1,113 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\obj\Debug\MVCAppTest.dll" total="0" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-02-11" time="17:33:32">
+<test-results name="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\bin\Debug\MVCAppTest.dll" total="4" errors="2" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-06-22" time="13:10:22">
   <environment nunit-version="3.6.0.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.10586.0" platform="Win32NT" cwd="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest" machine-name="IE11LTB81XTC2" user="H265456" user-domain="GLOBAL" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\obj\Debug\MVCAppTest.dll" executed="True" result="Failure" success="False" time="0.000" asserts="">
+  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\bin\Debug\MVCAppTest.dll" executed="True" result="Failure" success="False" time="71.758" asserts="2">
     <properties>
-      <property name="_SKIPREASON" value="File not found: C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\obj\Debug\MVCAppTest.dll" />
+      <property name="_PID" value="37440" />
+      <property name="_APPDOMAIN" value="domain-" />
     </properties>
-    <reason>
-      <message><![CDATA[File not found: C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\obj\Debug\MVCAppTest.dll]]></message>
-    </reason>
-    <results />
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+      <stack-trace />
+    </failure>
+    <results>
+      <test-suite type="TestSuite" name="MVCAppTest" executed="True" result="Failure" success="False" time="71.735" asserts="2">
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+          <stack-trace />
+        </failure>
+        <results>
+          <test-suite type="TestSuite" name="Controllers" executed="True" result="Failure" success="False" time="71.730" asserts="2">
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+              <stack-trace />
+            </failure>
+            <results>
+              <test-suite type="TestFixture" name="RegisterControllerTests(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;)" executed="True" result="Success" success="True" time="0.053" asserts="0">
+                <results>
+                  <test-case name="MVCAppTest.Controllers.RegisterControllerTests(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;).UserAddTest" executed="True" result="Success" success="True" time="0.039" asserts="0" />
+                </results>
+              </test-suite>
+              <test-suite type="TestSuite" name="UITest" executed="True" result="Failure" success="False" time="71.730" asserts="2">
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                  <stack-trace />
+                </failure>
+                <results>
+                  <test-suite type="TestSuite" name="TestCases" executed="True" result="Failure" success="False" time="71.730" asserts="2">
+                    <failure>
+                      <message><![CDATA[One or more child tests had errors]]></message>
+                      <stack-trace />
+                    </failure>
+                    <results>
+                      <test-suite type="TestFixture" name="UITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 10&quot;)" executed="True" result="Success" success="True" time="0.000" asserts="0">
+                        <results />
+                      </test-suite>
+                      <test-suite type="TestFixture" name="WUITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;)" executed="True" result="Failure" success="False" time="71.667" asserts="2">
+                        <failure>
+                          <message><![CDATA[One or more child tests had errors]]></message>
+                          <stack-trace />
+                        </failure>
+                        <results>
+                          <test-case name="MVCAppTest.Controllers.UITest.TestCases.WUITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;).Can_Navigate_To_GoToHome" executed="True" result="Error" success="False" time="32.295" asserts="1">
+                            <failure>
+                              <message><![CDATA[TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:61252/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
+  ----> System.Net.WebException : Unable to connect to the remote server
+  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:61252]]></message>
+                              <stack-trace><![CDATA[--TearDown
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at MVCAppTest.Controllers.UITest.TestCases.UITest.Cleanup() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\TestCases\UITest.cs:line 54
+--WebException
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+--SocketException
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)]]></stack-trace>
+                            </failure>
+                          </test-case>
+                          <test-case name="MVCAppTest.Controllers.UITest.TestCases.WUITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;).Can_Navigate_To_Login" executed="True" result="Error" success="False" time="39.371" asserts="1">
+                            <failure>
+                              <message><![CDATA[TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:61368/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
+  ----> System.Net.WebException : Unable to connect to the remote server
+  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:61368]]></message>
+                              <stack-trace><![CDATA[--TearDown
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at MVCAppTest.Controllers.UITest.TestCases.UITest.Cleanup() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\TestCases\UITest.cs:line 54
+--WebException
+   at System.Net.HttpWebRequest.GetResponse()
+   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
+--SocketException
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)]]></stack-trace>
+                            </failure>
+                          </test-case>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="TestClass" executed="True" result="Success" success="True" time="0.004" asserts="0">
+            <results>
+              <test-case name="MVCAppTest.TestClass.TestMethod" executed="True" result="Success" success="True" time="0.004" asserts="0">
+                <reason>
+                  <message><![CDATA[Your first passing test]]></message>
+                </reason>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
   </test-suite>
 </test-results>
