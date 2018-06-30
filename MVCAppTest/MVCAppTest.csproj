@@ -443,6 +443,13 @@
     <Message Text="$(SimianCommand)" />
     <Exec IgnoreExitCode="true" Command="$(SimianCommand)" />
   </Target>
+  <Target Name="InitSonar">
+    <Message Text="Starting the InitSonar in Test ###########" Importance="high" />
+   <Exec Command="SonarQube.Scanner.MSBuild.exe  /k:mvctest1 /n:mvctest /v:1.0 /d:sonar.host.url=http://localhost:9000 " />
+
+
+   </Target>
+  
   <Target Name="AnalyzeWithSonar">
     <Message Text="Starting the AnalyzeWithSonar in Test ###########" Importance="high" />
     <ItemGroup>
@@ -460,8 +467,10 @@
       <SonarConnectionParameters Condition=" $(SonarProfile) != '' ">$(SonarConnectionParameters) /d:sonar.profile="$(SonarProfile)"</SonarConnectionParameters>
     </PropertyGroup>
     <Message Text="Starting Sonar " Importance="high" />
-    <Exec Command="C:\Software\sonarqube671\sonar-scanner-msbuild-4.0.2.892\MSBuild.SonarQube.Runner.exe $(SonarConnectionParameters)  /d:sonar.projectVersion=2 /d:sonar.projectKey=&quot;mvctest1&quot; /d:sonar.projectName=&quot;mvctest&quot; /d:sonar.language=cs /d:sonar.dotnet.buildConfigurations=$(Configuration) /d:sonar.dotnet.visualstudio.solution.file=&quot;..\MVCApp\MVCApp.sln&quot; /d:csharp.sonar.projectBaseDir=&quot;..\MVCApp&quot; /d:sonar.gallio.installDirectory=$(GallioPath) /d:sonar.gallio.coverage.tool=&quot;OpenCover&quot;   " />
+     <Exec Command="SonarQube.Scanner.MSBuild.exe end" />
   </Target>
+  
+  
   <Target Name="RunSpecs">
     <Message Importance="high" Text="Starting the RunSpecs in Test ###########" />
     <PropertyGroup>
@@ -481,6 +490,8 @@
     <Message Text="Starting the BeforeRunJMeterTests in JMeterTestsDirectory $(JMeterTestsDirectory)" Importance="high" />
     <Message Text="Starting the BeforeRunJMeterTests in JMeterTestProjects Fullpath %(JMeterTestProjects.FullPath)" Importance="high" />
   </Target>
+  
+  
   <Target Name="CoreRunJMeterTests" Inputs="..\IntegrationTests\JMeterTests\jmetertest.jmx" Outputs="AlwaysExecute">
     <Message Text="Starting the CoreRunJMeterTests in Test $(BaseDirectory)" Importance="high" />
     <Message Text="Starting the CoreRunJMeterTests in Test $(IntegrationTestsDirectory)" Importance="high" />
@@ -518,11 +529,16 @@
     <!-- Remove bin folder -->
     <Message Importance="High" Text="BeforeBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
     <RemoveDir Directories="$(BaseOutputPath)" />
+    
+    <CallTarget Targets="InitSonar" />
+
   </Target>
   <Target Name="AfterBuild">
 		<Message Importance="High" Text="AfterBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
 		<Message Text="AfterBuild called " Importance="high" />
 		<CallTarget Targets="ApiDoc" />
+
+
 
 		<CallTarget Targets="AnalyzeWithFxCop" />
 		<CallTarget Targets="CodeDuplicated" />
