@@ -500,7 +500,8 @@
   	fOR VERBOSE ADD THIS  -s -Dsun.rmi.loader.logLevel=verbose
   	-->
     <Exec Command="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation) -L jmeter.util=DEBUG" ContinueOnError="false" />
-    <Message Text=" Jmeter test completed " Importance="high" />
+    <Message Text="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation) -L jmeter.util=DEBUG   " Importance="high" />
+    <Message Text="  Jmeter test completed " Importance="high" />
   </Target>
   
 <Target Name="JMeterTestReports"  >
