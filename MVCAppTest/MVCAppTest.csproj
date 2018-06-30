@@ -402,7 +402,7 @@
   </Target>
   <Target Name="CoverageOC" DependsOnTargets="TestResultsReport">
     <Message Text="CoverageOC called $(MSBuildStartupDirectory)\$(NUnitResultsFolder)  " Importance="high" />
-    <Exec Command="..\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:Path64 -enableperformancecounters -searchdirs:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools&quot; -targetdir:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools&quot; -target:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools\nunit3-console.exe&quot; -targetargs:&quot;@(TestAssembly) /version /trace=Debug /config=Debug /result=..\$(NUnitResultsFolder)\TestResult.xml&quot;    -filter:&quot;+[*]*&quot; -output:&quot;..\CoverageResults\coverage-results.xml&quot;" ContinueOnError="false" />
+    <Exec Command="..\MVCApp\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:Path64 -enableperformancecounters -searchdirs:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools&quot; -targetdir:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools&quot; -target:&quot;..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools\nunit3-console.exe&quot; -targetargs:&quot;..\MVCAppTest\bin\Debug\MVCAppTest.dll;..\MVCAppTest\bin\Debug\MVCAppTest.pdb; /version /trace=Debug /config=Debug /result=..\$(NUnitResultsFolder)\TestResult.xml&quot;    -filter:&quot;+[*]*&quot; -output:&quot;..\CoverageResults\coverage-results.xml&quot;" ContinueOnError="false" />
     <Message Text="CoverageOC Completed " />
   </Target>
   <Target Name="CodeCoverageReport" DependsOnTargets="CoverageOC">
