@@ -544,8 +544,8 @@
 		<CallTarget Targets="CodeDuplicated" />
 		<CallTarget Targets="CodeCoverageReport" />		 
 		<CallTarget Targets="RunJMeterTests" />
-		<!--  <CallTarget Targets="AnalyzeWithSonar" /> -->
-		 <CallTarget Targets="JMeterTestReports" /> 
+		<!--  <CallTarget Targets="AnalyzeWithSonar" /> 
+		 <CallTarget Targets="JMeterTestReports" /> -->
 
     
   </Target>
