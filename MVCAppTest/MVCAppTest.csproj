@@ -530,7 +530,7 @@
     <Message Importance="High" Text="BeforeBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
     <RemoveDir Directories="$(BaseOutputPath)" />
     
-    <CallTarget Targets="InitSonar" />
+  <!--  <CallTarget Targets="InitSonar" />-->
 
   </Target>
   <Target Name="AfterBuild">
@@ -543,9 +543,9 @@
 		<CallTarget Targets="AnalyzeWithFxCop" />
 		<CallTarget Targets="CodeDuplicated" />
 		<CallTarget Targets="CodeCoverageReport" />		 
-		<!--<CallTarget Targets="RunJMeterTests" />
-		  <CallTarget Targets="AnalyzeWithSonar" /> 
-		 <CallTarget Targets="JMeterTestReports" /> -->
+		<CallTarget Targets="RunJMeterTests" />
+		<!--  <CallTarget Targets="AnalyzeWithSonar" />  -->
+		 <CallTarget Targets="JMeterTestReports" />
 
     
   </Target>
