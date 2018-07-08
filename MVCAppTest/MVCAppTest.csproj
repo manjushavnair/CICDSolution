@@ -543,8 +543,8 @@
 		<CallTarget Targets="AnalyzeWithFxCop" />
 		<CallTarget Targets="CodeDuplicated" />
 		<CallTarget Targets="CodeCoverageReport" />		 
-		<CallTarget Targets="RunJMeterTests" />
-		<!--  <CallTarget Targets="AnalyzeWithSonar" /> 
+		<!--<CallTarget Targets="RunJMeterTests" />
+		  <CallTarget Targets="AnalyzeWithSonar" /> 
 		 <CallTarget Targets="JMeterTestReports" /> -->
 
     
