@@ -18,8 +18,7 @@ environment {
 
 stages {
         
-  node("label") 
-  {
+  
   stage('first')
   {
    def mvnHome
@@ -63,7 +62,7 @@ stages {
          subject: "Terraform build complete",
          body: "Jenkins job ${env.JOB_NAME} - build ${env.BUILD_NUMBER} complete"
   }
-}
+ 
 }
 
 //6. post actions for success or failure of job. Commented out in the following code: Example on how to add a node where a stage is specifically executed. Also, PublishHTML is also a good plugin to expose Cucumber reports but we are using a plugin using Json.
