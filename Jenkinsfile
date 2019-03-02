@@ -21,7 +21,9 @@ stages {
   
   stage('first')
   {
+    steps {
    def mvnHome
+   }
    }
    
   
