@@ -24,43 +24,14 @@ stages {
     steps {
     echo 'Checking   version..'
    }
-   }
+  }
+   stage('Configure') 
+   {
+      env.PATH = "${tool 'MSBuild'}/bin:${env.PATH}"
+     }
    
   
    
    
  }
 }
-
-//6. post actions for success or failure of job. Commented out in the following code: Example on how to add a node where a stage is specifically executed. Also, PublishHTML is also a good plugin to expose Cucumber reports but we are using a plugin using Json.
-post {
-	success {
-	//node('node1'){
-		echo "Test succeeded"
-		script {
-		    // configured from using gmail smtp Manage Jenkins-> Configure System -> Email Notification
-		    // SMTP server: smtp.gmail.com
-		    // Advanced: Gmail user and pass, use SSL and SMTP Port 465
-		    // Capitalized variables are Jenkins variables – see https://wiki.jenkins.io/display/JENKINS/Building+a+software+project
-		mail(bcc: '',
-		     body: "Run ${JOB_NAME}-#${BUILD_NUMBER} succeeded. To get more details, visit the build results page: ${BUILD_URL}.",
-		     cc: '',
-		     from: 'jenkins-admin@gmail.com',
-		     replyTo: '',
-		     subject: "${JOB_NAME} ${BUILD_NUMBER} succeeded",
-		     to: env.notification_email)
- 	    }
-	//}
-	}
-	failure {
-		echo "Test failed"
-		mail(bcc: '',
-		body: "Run ${JOB_NAME}-#${BUILD_NUMBER} succeeded. To get more details, visit the build results page: ${BUILD_URL}.",
-		cc:'jenkins-admin@gmail.com',
-		from: 'jenkins-admin@gmail.com',
-		replyTo: '',
-		subject: "${JOB_NAME} ${BUILD_NUMBER} failed",
-		to: env.notification_email)
- 	}
-}
-
