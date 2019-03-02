@@ -43,8 +43,8 @@ stages {
             steps {
               echo 'Checking   version..'
               echo 'node -v'
-             echo 'Restore nugets..'
-              'nuget restore MVCApp//MVCApp.sln'
+           echo 'Restore nugets..'
+              bat "nuget restore MVCApp//MVCApp.sln"
             } 
          
    }
