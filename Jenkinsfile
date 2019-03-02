@@ -24,44 +24,9 @@ stages {
    def mvnHome
    }
    
-   stage('Configure') {
-    env.PATH = "${tool 'MSBuild'}/bin:${env.PATH}"
-     }
   
-    stage('Checkout') {
    
-    // Get some code from a GitHub repository
-      git 'https://github.com/manjushavnair/CICDSolution.git'
-      mvnHome = tool 'M3'
-      
-    }
-    
-   stage('Preparation') { // for display purposes
    
-        steps {
-        bat echo 'Checking   version..'
-        bat echo 'node -v'
-        bat echo 'Restore nugets..'
-        bat 'nuget restore MVCApp.sln'
-        } 
-     
-   }
-   stage('Build') {
-    bat echo 'Building..'
-    bat "C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\msbuild.exe" MVCApp//MVCApp.sln /noautorsp /ds /nologo /t:clean,rebuild /p:Configuration=Debug /v:m /p:VisualStudioVersion=14.0
-
-     }
-   stage('Results') {
-      junit '**/target/surefire-reports/TEST-*.xml'
-      archive 'target/*.jar'
-   }
-   
-   stage ('Notification') {
-    mail from: "jenkins@mycompany.com",
-         to: "devopsteam@mycompany.com",
-         subject: "Terraform build complete",
-         body: "Jenkins job ${env.JOB_NAME} - build ${env.BUILD_NUMBER} complete"
-  }
  }
 }
 
