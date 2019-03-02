@@ -45,7 +45,7 @@ stages {
    }
    stage('Build') {
     bat echo 'Building..'
-    bat "C:\\Program Files (x86)]\\MSBuild\\14.0\\Bin\\msbuild.exe" MVCApp\MVCApp.sln /noautorsp /ds /nologo /t:clean,rebuild /p:Configuration=Debug /v:m /p:VisualStudioVersion=14.0 /p:Platform=\"Any CPU\" /clp:Summary;ErrorsOnly;WarningsOnly /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}
+    bat "C:\\Program Files (x86)]\\MSBuild\\14.0\\Bin\\msbuild.exe" MVCApp\\MVCApp.sln /noautorsp /ds /nologo /t:clean,rebuild /p:Configuration=Debug /v:m /p:VisualStudioVersion=14.0 /p:Platform=\"Any CPU\" /clp:Summary;ErrorsOnly;WarningsOnly /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}
 
      }
    stage('Results') {
