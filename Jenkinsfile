@@ -65,14 +65,14 @@ stages {
   //      }
   // }
    
-//   stage ('Notification') {
-//    steps {
-//       mail from: "jenkins@mycompany.com",
-//            to: "devopsteam@mycompany.com",
-//            subject: "  build complete",
-//            body: "Jenkins job ${env.JOB_NAME} - build ${env.BUILD_NUMBER} complete"
-//            }
-//  }
+   stage ('Notification') {
+    steps {
+       mail from: "manjusha.saju@honeywell.com",
+            to: "manjusha.saju@honeywell.com",
+            subject: "  build complete",
+            body: "Jenkins job ${env.JOB_NAME} - build ${env.BUILD_NUMBER} complete"
+            }
+   }
    
  }
 
