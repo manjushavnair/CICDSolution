@@ -89,7 +89,7 @@ post {
 		echo "Test failed"
 		mail(bcc: '',
 		body: "Run ${JOB_NAME}-#${BUILD_NUMBER} succeeded. To get more details, visit the build results page: ${BUILD_URL}.",
-		cc:,
+		cc:'jenkins-admin@gmail.com',
 		from: 'jenkins-admin@gmail.com',
 		replyTo: '',
 		subject: "${JOB_NAME} ${BUILD_NUMBER} failed",
