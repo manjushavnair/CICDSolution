@@ -89,7 +89,8 @@ post {
 		    // Capitalized variables are Jenkins variables – see https://wiki.jenkins.io/display/JENKINS/Building+a+software+project
 		mail(bcc: '',
 		     body: "Run ${JOB_NAME}-#${BUILD_NUMBER} succeeded. To get more details, visit the build results page: ${BUILD_URL}.",
- 		     from: 'jenkins-admin@gmail.com',
+		     cc: '',
+		     from: 'jenkins-admin@gmail.com',
 		     replyTo: '',
 		     subject: "${JOB_NAME} ${BUILD_NUMBER} succeeded",
 		     to: env.notification_email)
@@ -100,7 +101,7 @@ post {
 		echo "Test failed"
 		mail(bcc: '',
 		body: "Run ${JOB_NAME}-#${BUILD_NUMBER} succeeded. To get more details, visit the build results page: ${BUILD_URL}.",
-		cc:,
+		cc:'',
 		from: 'jenkins-admin@gmail.com',
 		replyTo: '',
 		subject: "${JOB_NAME} ${BUILD_NUMBER} failed",
