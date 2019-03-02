@@ -58,12 +58,12 @@ stages {
       }
      }
   
-   stage('Results') {
-     steps {
-        junit '**/target/surefire-reports/TEST-*.xml'
+  // stage('Results') {
+  //   steps {
+        //junit '**/target/surefire-reports/TEST-*.xml'
        // archive 'target/*.jar'
-        }
-   }
+  //      }
+  // }
    
    stage ('Notification') {
     steps {
