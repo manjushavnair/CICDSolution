@@ -60,7 +60,7 @@ stages {
   
    stage('Results') {
      steps {
-       // junit '**/target/surefire-reports/TEST-*.xml'
+        junit '**/target/surefire-reports/TEST-*.xml'
        // archive 'target/*.jar'
         }
    }
