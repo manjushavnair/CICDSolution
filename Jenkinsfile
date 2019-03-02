@@ -52,8 +52,8 @@ stages {
    stage('Build') {
     steps {
       echo 'Building..'
-      bat "\"${tool 'MSBuild'}\" MVCApp//MVCApp.sln /noautorsp /ds /nologo /t:clean,rebuild /p:Configuration=Debug /v:m /p:VisualStudioVersion=14.0
-   }
+      bat "\"${tool 'MSBuild'}\" MVCApp//MVCApp.sln  
+      }
      }
   
    
