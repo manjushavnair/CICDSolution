@@ -41,10 +41,10 @@ stages {
      stage('Preparation') { // for display purposes
        
             steps {
-            bat echo 'Checking   version..'
-            bat echo 'node -v'
-            bat echo 'Restore nugets..'
-            bat 'nuget restore MVCApp//MVCApp.sln'
+              echo 'Checking   version..'
+              echo 'node -v'
+             echo 'Restore nugets..'
+              'nuget restore MVCApp//MVCApp.sln'
             } 
          
    }
