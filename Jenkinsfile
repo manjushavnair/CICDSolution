@@ -26,20 +26,29 @@ stages {
     echo 'Checking   version..'
    }
   }
-   stage('Configure') 
-   {steps {
-       PATH = "${tool 'MSBuild'}/bin:${env.PATH}"
-      }
-     }
+   
    
    stage('Checkout') {
       steps {
        // Get some code from a GitHub repository
-         git 'https://github.com/manjushavnair/CICDSolution.git'
-        def  mvnHome = tool 'M3'
+       //  git clone 'https://github.com/manjushavnair/CICDSolution.git'
+         checkout scm
+         
          }
          
     }
+    
+     stage('Preparation') { // for display purposes
+       
+            steps {
+            bat echo 'Checking   version..'
+            bat echo 'node -v'
+            bat echo 'Restore nugets..'
+            bat 'nuget restore MVCApp//MVCApp.sln'
+            } 
+         
+   }
+  
   
    
    
