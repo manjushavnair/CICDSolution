@@ -96,4 +96,4 @@ post {
 		to: env.notification_email)
  	}
 }
-}
+
