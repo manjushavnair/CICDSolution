@@ -22,7 +22,7 @@ stages {
   stage('first')
   {
     steps {
-   def mvnHome
+    bat echo 'Checking   version..'
    }
    }
    
