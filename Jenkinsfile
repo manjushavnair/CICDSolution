@@ -52,7 +52,7 @@ stages {
    stage('Build') {
     steps {
       echo 'Building..'
-      bat "\"${tool 'MSBuild'}\" MVCApp//MVCApp.sln  
+      bat "\"${tool 'MSBuild'}\" MVCApp\\MVCApp.sln  
       }
      }
   
