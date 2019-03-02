@@ -14,6 +14,7 @@ environment {
 	firstEnvVar= 'FIRST_VAR'
 	secondEnvVar= 'SECOND_VAR'
 	thirdEnvVar= 'THIRD_VAR'
+	
 }
 
 stages {
@@ -27,10 +28,18 @@ stages {
   }
    stage('Configure') 
    {steps {
-      env.PATH = "${tool 'MSBuild'}/bin:${env.PATH}"
+       PATH = "${tool 'MSBuild'}/bin:${env.PATH}"
       }
      }
    
+   stage('Checkout') {
+      steps {
+       // Get some code from a GitHub repository
+         git 'https://github.com/manjushavnair/CICDSolution.git'
+        def  mvnHome = tool 'M3'
+         }
+         
+    }
   
    
    
