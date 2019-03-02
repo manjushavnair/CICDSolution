@@ -26,8 +26,9 @@ stages {
    }
   }
    stage('Configure') 
-   {
+   {steps {
       env.PATH = "${tool 'MSBuild'}/bin:${env.PATH}"
+      }
      }
    
   
