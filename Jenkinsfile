@@ -18,12 +18,13 @@ environment {
 
 stages {
         
-  node(‘label’) {
-   def mvnHome
+  node("label") 
+  {
+ // def mvnHome
    
    stage('Configure') {
     env.PATH = "${tool 'MSBuild'}/bin:${env.PATH}"
-  }
+     }
   
     stage('Checkout') {
    
