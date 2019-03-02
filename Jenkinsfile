@@ -20,7 +20,10 @@ stages {
         
   node("label") 
   {
- // def mvnHome
+  stage('first')
+  {
+   def mvnHome
+   }
    
    stage('Configure') {
     env.PATH = "${tool 'MSBuild'}/bin:${env.PATH}"
