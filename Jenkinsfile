@@ -22,7 +22,7 @@ stages {
   stage('first')
   {
     steps {
-    bat echo 'Checking   version..'
+    echo 'Checking   version..'
    }
    }
    
