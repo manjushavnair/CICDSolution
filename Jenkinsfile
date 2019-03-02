@@ -58,7 +58,21 @@ stages {
       }
      }
   
+   stage('Results') {
+     steps {
+       // junit '**/target/surefire-reports/TEST-*.xml'
+       // archive 'target/*.jar'
+        }
+   }
    
+   stage ('Notification') {
+    steps {
+       mail from: "jenkins@mycompany.com",
+            to: "devopsteam@mycompany.com",
+            subject: "  build complete",
+            body: "Jenkins job ${env.JOB_NAME} - build ${env.BUILD_NUMBER} complete"
+            }
+  }
    
  }
 }
