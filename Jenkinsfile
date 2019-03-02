@@ -89,8 +89,7 @@ post {
 		    // Capitalized variables are Jenkins variables – see https://wiki.jenkins.io/display/JENKINS/Building+a+software+project
 		mail(bcc: '',
 		     body: "Run ${JOB_NAME}-#${BUILD_NUMBER} succeeded. To get more details, visit the build results page: ${BUILD_URL}.",
-		     cc: '',
-		     from: 'jenkins-admin@gmail.com',
+ 		     from: 'jenkins-admin@gmail.com',
 		     replyTo: '',
 		     subject: "${JOB_NAME} ${BUILD_NUMBER} succeeded",
 		     to: env.notification_email)
