@@ -107,5 +107,8 @@ post {
 		subject: "${JOB_NAME} ${BUILD_NUMBER} failed",
 		to: env.notification_email)
  	}
+	unstable {
+       echo 'Pipeline run marked unstable'
+     }
 }
 }
