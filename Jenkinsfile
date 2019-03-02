@@ -51,8 +51,8 @@ stages {
   
    stage('Build') {
     steps {
-      bat echo 'Building..'
-      bat "C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\msbuild.exe" MVCApp//MVCApp.sln /noautorsp /ds /nologo /t:clean,rebuild /p:Configuration=Debug /v:m /p:VisualStudioVersion=14.0
+      echo 'Building..'
+      "C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\msbuild.exe" MVCApp//MVCApp.sln /noautorsp /ds /nologo /t:clean,rebuild /p:Configuration=Debug /v:m /p:VisualStudioVersion=14.0
    }
      }
   
