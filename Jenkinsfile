@@ -68,7 +68,7 @@ stages {
    stage('Build SonarQube analysis') {
     steps {
      script {
-       def sqScannerMsBuildHome = tool 'Scanner for MSBuild 2.2'
+       def sqScannerMsBuildHome = tool 'SonarScanner for MSBuild 4.6.0.1930 - .NET Fwk 4.6'
        }
        withSonarQubeEnv('My SonarQube Server') {
          echo 'sonar 1..'
