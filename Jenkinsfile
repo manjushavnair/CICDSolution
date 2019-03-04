@@ -70,7 +70,7 @@ stages {
 	 script {
 	 def sqScannerMsBuildHome = tool 'SONARSCANNER'
 	 }
-	 withSonarQubeEnv('My SonarQube Server') {
+	 withSonarQubeEnv('SONARSERVER') {
 	 echo 'sonar 1..${sqScannerMsBuildHome}'
 	// Due to SONARMSBRU-307 value of sonar.host.url and credentials should be passed on command line
 	//bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:HPSPED /n:hpsprojectdigitization /v:1.0 /d:sonar.host.url=https://sonarqube.honeywell.com/ /d:sonar.login=0e417dae7101e1a21eb6170f802fffb9e81d0129"
