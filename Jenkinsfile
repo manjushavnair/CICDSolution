@@ -107,7 +107,7 @@ post {
 		    // configured from using gmail smtp Manage Jenkins-> Configure System -> Email Notification
 		    // SMTP server: smtp.gmail.com
 		    // Advanced: Gmail user and pass, use SSL and SMTP Port 465
-		    // Capitalized variables are Jenkins variables – see https://wiki.jenkins.io/display/JENKINS/Building+a+software+project
+		    // Capitalized variables are Jenkins variables  see https://wiki.jenkins.io/display/JENKINS/Building+a+software+project
 		mail(bcc: '',
 		     body: "Run ${JOB_NAME}-#${BUILD_NUMBER} succeeded. To get more details, visit the build results page: ${BUILD_URL}.",
 		     cc: '',
