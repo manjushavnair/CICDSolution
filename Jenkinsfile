@@ -121,10 +121,10 @@ post {
 		mail(bcc: '',
 		     body: "Run ${JOB_NAME}-#${BUILD_NUMBER} succeeded. To get more details, visit the build results page: ${BUILD_URL}.",
 		     cc: '',
-		     from: 'jenkins-admin@gmail.com',
-		     replyTo: '',
+		     from: 'manjusha.saju@honeywell.com',
+		     replyTo: 'manjusha.saju@honeywell.com',
 		     subject: "${JOB_NAME} ${BUILD_NUMBER} succeeded",
-		     to: env.notification_email)
+		     to: "manjusha.saju@honeywell.com")
  	    }
 	//}
 	}
