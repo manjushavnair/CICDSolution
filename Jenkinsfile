@@ -20,7 +20,7 @@ environment {
 stages {
         
   
-  stage('first')
+  stage('Start')
   {
     steps {
     echo 'Checking   version..'
@@ -133,7 +133,7 @@ post {
 		mail(bcc: '',
 		body: "Run ${JOB_NAME}-#${BUILD_NUMBER} succeeded. To get more details, visit the build results page: ${BUILD_URL}.",
 		cc:'',
-		from: 'jenkins-admin@gmail.com',
+		from: 'manjusha.saju@honeywell.com',
 		replyTo: '',
 		subject: "${JOB_NAME} ${BUILD_NUMBER} failed",
 		to: env.notification_email)
@@ -141,6 +141,6 @@ post {
 	unstable {
        echo 'Pipeline run marked unstable'
 
-     }
+        }
 }
 }
