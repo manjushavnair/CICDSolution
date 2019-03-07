@@ -33,6 +33,10 @@ stages {
        // Get some code from a GitHub repository
        //  git clone 'https://github.com/manjushavnair/CICDSolution.git'
          checkout scm
+	 //     checkout([
+  //$class: 'GitSCM', branches: [[name: '*/master']],
+ // userRemoteConfigs: [[url: 'git@bitbucket.org:BRNTZN/repository2.git',credentialsId:'jenkinsmaster']]
+//])
          
          }
          
