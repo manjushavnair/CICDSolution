@@ -128,7 +128,7 @@ post {
 		     from: 'manjusha.saju@honeywell.com',
 		     replyTo: 'manjusha.saju@honeywell.com',
 		     subject: "${JOB_NAME} ${BUILD_NUMBER} succeeded",
-		     to: "manjusha.saju@honeywell.com")
+		     to: "DL_HPS_IPE@HoneywellProd.onmicrosoft.com")
  	    }
 	//}
 	}
