@@ -79,7 +79,9 @@ stages {
 				}
 				withSonarQubeEnv('SONARSERVER') 
 				{
-					echo 'sonar 1..${sqScannerHome}'
+					 
+					echo "sonar 1 ${sqScannerHome}"
+					echo   ${sqScannerHome}
 					bat "${sqScannerHome}/bin/sonar-scanner.bat"   
 
 				}
