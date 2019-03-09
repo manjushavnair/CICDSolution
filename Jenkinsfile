@@ -72,11 +72,12 @@ stages {
 
 	 stage('Build SonarQube analysis') 
 		 {
-			steps {
-				
-				agent {
+			 agent {
 		                    label 'master'
 		             }
+			steps {
+				
+				
 			echo 'SonarQube 1.'
 				script {
 				def sqScannerHome = tool 'SONARSCANNER'
