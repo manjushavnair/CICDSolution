@@ -94,7 +94,11 @@ stages {
 				timeout(time: 1, unit: 'HOURS') {
         def qg = waitForQualityGate()
         if (qg.status != 'OK') {
-            echo "Pipeline aborted due to quality gate failure: ${qg.status}"
+		// error for failing
+		// echo for no failure
+		
+          //  echo "Pipeline aborted due to quality gate failure: ${qg.status}"
+            error "Pipeline aborted due to quality gate failure: ${qg.status}"
         }
     }
 			}
