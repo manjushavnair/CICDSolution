@@ -79,12 +79,10 @@ stages {
 				
 				
 			echo 'SonarQube 1.'
-				script {
-				def sqScannerHome = tool 'SONARSCANNER'
-				}
+				 
 				withSonarQubeEnv('SONARSERVER') 
 				{
-					 
+					 def sqScannerHome = tool 'SONARSCANNER'
 					echo "sonar 1 ${sqScannerHome}"
 					 
 					bat "${sqScannerHome}/bin/sonar-scanner.bat"   
