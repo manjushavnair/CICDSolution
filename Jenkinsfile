@@ -27,7 +27,14 @@ stages {
 		  {
 		    steps 
 			  {
-		    echo 'Checking   version..'
+	    			echo 'Checking   version..'
+           			cleanDir(env.WORKSPACE)
+         			checkoutComponents(env.COMPONENTS)
+            			configuration = getConfiguration('buildconfiguration.json')
+				  
+			//	for(def component : configuration.components ) {
+                        //             def solution = "${component.name}\\${component.solution}"
+                        //      }
 		    }
 		   }
 		 
