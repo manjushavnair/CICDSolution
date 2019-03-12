@@ -32,6 +32,7 @@ stages {
          			checkoutComponents(env.COMPONENTS)
             			configuration = getConfiguration('buildconfiguration.json')
 				  
+				  
 			//	for(def component : configuration.components ) {
                         //             def solution = "${component.name}\\${component.solution}"
                         //      }
