@@ -21,10 +21,7 @@ environment {
 
 stages {
         
- //  timestamps {
-		try
-		{
-		  stage('Start')
+   stage('Start')
 		  {
 		    steps 
 			  {
@@ -32,17 +29,7 @@ stages {
 		    }
 		   }
 		 } 
-	         catch (ex) 
-	         {
-		    buildStatus = BuildStatus.Error;
-		    echo ex
-		    exit 1
-                 } finally 
-		 {
-		 }
-      //  }
-   
-   
+	         
    
    stage('Checkout') {
       steps {
