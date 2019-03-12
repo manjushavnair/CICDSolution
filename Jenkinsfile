@@ -21,7 +21,7 @@ environment {
 
 stages {
         
-   timestamps {
+ //  timestamps {
 		try
 		{
 		  stage('Start')
@@ -40,7 +40,7 @@ stages {
                  } finally 
 		 {
 		 }
-        }
+      //  }
    
    
    
