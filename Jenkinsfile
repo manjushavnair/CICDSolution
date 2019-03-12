@@ -3,6 +3,8 @@ pipeline {
 
 agent any
 
+	
+		
 parameters {
 	// 2.variables for the parametrized execution of the test: Text and options
 	choice(choices: 'yes\nno', description: 'Are you sure you want to execute this test?', name: 'run_test_only')
@@ -19,13 +21,27 @@ environment {
 
 stages {
         
-  
-  stage('Start')
-  {
-    steps {
-    echo 'Checking   version..'
+   timestamps {
+		try
+		{
+		  stage('Start')
+		  {
+		    steps 
+			  {
+		    echo 'Checking   version..'
+		    }
+		   }
+		 } 
+	         catch (ex) 
+	         {
+		    buildStatus = BuildStatus.Error;
+		    echo ex
+		    exit 1
+                 } finally 
+		 {
+		 }
+        }
    }
-  }
    
    
    stage('Checkout') {
@@ -175,4 +191,10 @@ post {
 
         }
 }
+}
+
+class BuildStatus {
+    static String Ok = 'Ok'
+    static String Error = 'Error'
+    static String Warning = 'Warning'
 }
