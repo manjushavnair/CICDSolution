@@ -1,8 +1,8 @@
 {
   "components": [
     {
-      "name": "watchshop",
-      "solution": "watchshop.sln",
+      "name": "MVCApp",
+      "solution": "MVCApp.sln",
       "properties": "/p:Configuration=Release /p:Platform=\"Any CPU\""
     }
   ],
