@@ -28,7 +28,7 @@ stages {
 		    echo 'Checking   version..'
 		    }
 		   }
-		 } 
+		 
 	         
    
    stage('Checkout') {
