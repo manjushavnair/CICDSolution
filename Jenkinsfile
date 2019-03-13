@@ -1,8 +1,9 @@
- 
 pipeline {
 
 agent any
 
+	
+		
 parameters {
 	// 2.variables for the parametrized execution of the test: Text and options
 	choice(choices: 'yes\nno', description: 'Are you sure you want to execute this test?', name: 'run_test_only')
@@ -19,20 +20,26 @@ environment {
 
 stages {
         
-  
-  stage('Start')
-  {
-    steps {
-    echo 'Checking   version..'
-   }
-  }
-   
+   stage('Start')
+		  {
+		    steps 
+			  {
+	    			echo 'Checking   version..'
+				   
+		    }
+		   }
+		 
+	         
    
    stage('Checkout') {
       steps {
        // Get some code from a GitHub repository
        //  git clone 'https://github.com/manjushavnair/CICDSolution.git'
          checkout scm
+	 //     checkout([
+  //$class: 'GitSCM', branches: [[name: '*/master']],
+ // userRemoteConfigs: [[url: 'git@bitbucket.org:BRNTZN/repository2.git',credentialsId:'jenkinsmaster']]
+//])
          
          }
          
@@ -65,36 +72,64 @@ stages {
   //      }
   // }
    
-//	  stage('Build SonarQube analysis') {
-	//  steps {
-	 //script {
-	 //def sqScannerMsBuildHome = tool 'SONARSCANNER'
-	// }
-	// withSonarQubeEnv('SONARSERVER') {
-	// echo 'sonar 1..${sqScannerMsBuildHome}'
-	// Due to SONARMSBRU-307 value of sonar.host.url and credentials should be passed on command line
-	//bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:HPSPED /n:hpsprojectdigitization /v:1.0 /d:sonar.host.url=https://sonarqube.honeywell.com/ /d:sonar.login=0e417dae7101e1a21eb6170f802fffb9e81d0129"
-//	bat "${sqScannerMsBuildHome}/bin/sonar-scanner.bat"   
 
-	// bat 'MSBuild.exe /t:Rebuild'
-	//   bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe end"
+	 stage('Build SonarQube analysis') 
+		 {
+			 agent {
+		                    label 'master'
+		             }
+			steps {
+				
+				
+			echo 'SonarQube 1.'
+				 
+				withSonarQubeEnv('SONARSERVER') 
+				{     
+				 
+					echo "sonar 1 ${tool 'SONARSCANNER'}"
+					 
+					bat "${tool 'SONARSCANNER'}/bin/sonar-scanner.bat"   
 
-//	  }
-//	 script {
-	//	 def qualitygate = waitForQualityGate()
-		// if (qualitygate.status != "OK") {
-		  //  error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
-		// }
-	// }
-//	 }    
-
-	// }
-  
+				}
+				
+				 script 
+				  {
+				timeout(time: 1, unit: 'HOURS') {
+        def qg = waitForQualityGate()
+        if (qg.status != 'OK') {
+		// error for failing
+		// echo for no failure
+		
+           echo "Pipeline aborted due to quality gate failure: ${qg.status}"
+         //   error "Pipeline aborted due to quality gate failure: ${qg.status}"
+        }
+    }
+			}
+				
+			//	 timeout(time: 1, unit: 'HOURS') {
+                   // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                    // true = set pipeline to UNSTABLE, false = don't
+                    // Requires SonarQube Scanner for Jenkins 2.7+
+                    //waitForQualityGate abortPipeline: true
+                      //  } 
+				// script 
+				 //{
+				//	 def qualitygate = waitForQualityGate()
+				//	 {
+				//		if (qualitygate.status != "OK") 
+				//		{
+				//			error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+				//		}
+				//	 }
+				// }
+			 }    
+		
+		 }
   
    stage ('Notification') {
     steps {
        mail from: "manjusha.saju@honeywell.com",
-            to: "manjusha.saju@honeywell.com",
+            to: "DL_HPS_IPE@HoneywellProd.onmicrosoft.com",
             subject: "  build complete",
             body: "Jenkins job ${env.JOB_NAME} - build ${env.BUILD_NUMBER} complete"
             }
@@ -124,7 +159,7 @@ post {
 		     from: 'manjusha.saju@honeywell.com',
 		     replyTo: 'manjusha.saju@honeywell.com',
 		     subject: "${JOB_NAME} ${BUILD_NUMBER} succeeded",
-		     to: "manjusha.saju@honeywell.com")
+		     to: "DL_HPS_IPE@HoneywellProd.onmicrosoft.com")
  	    }
 	//}
 	}
