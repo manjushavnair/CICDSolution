@@ -480,7 +480,7 @@
                                     </table>
                                 </div>
                                 <div  class='fixture-footer'>
-                                    <span  alt='Fixture started at time' title='Fixture started at time' class='startedAt'><i class='mdi-device-access-time'></i>0.053</span>
+                                    <span  alt='Fixture started at time' title='Fixture started at time' class='startedAt'><i class='mdi-device-access-time'></i>0.087</span>
                                     <span style='display:none;' alt='Fixture ended at time' title='Fixture ended at time' class='endedAt'><i class='mdi-device-access-time'></i><!--%FIXTUREENDEDAT%--></span>
                                 </div>
                             </div>
@@ -530,23 +530,29 @@
                                         </tr>
                                         <tr>
                             <td class='test-name'>MVCAppTest.Controllers.UITest.TestCases.Can_Navigate_To_GoToHome</td>
-                            <td class='error'>error<pre>TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:61252/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
+                            <td class='error'>error<pre>OpenQA.Selenium.NoSuchElementException : no such element: Unable to locate element: {"method":"id","selector":"loginLink"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.35.528161 (5b82f2d2aae0ca24b877009200ced9065a772e73),platform=Windows NT 10.0.17134 x86_64)
+TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:60585/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
   ----> System.Net.WebException : Unable to connect to the remote server
-  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:61252 -> --TearDown   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)   at MVCAppTest.Controllers.UITest.TestCases.UITest.Cleanup() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\TestCases\UITest.cs:line 54--WebException   at System.Net.HttpWebRequest.GetResponse()   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)--SocketException   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)</pre></td>
+  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:60585 ->    at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)   at MVCAppTest.Controllers.UITest.PageObjects.HomePage.get_Name() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\PageObjects\SimianTest.cs:line 22   at MVCAppTest.Controllers.UITest.TestCases.WUITest.Can_Navigate_To_GoToHome() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\TestCases\WUITest.cs:line 51--TearDown   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)   at MVCAppTest.Controllers.UITest.TestCases.UITest.Cleanup() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\TestCases\UITest.cs:line 54--WebException   at System.Net.HttpWebRequest.GetResponse()   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)--SocketException   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)</pre></td>
                             <td class='test-features '></td>
                         </tr>
                         <tr>
                             <td class='test-name'>MVCAppTest.Controllers.UITest.TestCases.Can_Navigate_To_Login</td>
-                            <td class='error'>error<pre>TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:61368/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
+                            <td class='error'>error<pre>OpenQA.Selenium.NoSuchElementException : no such element: Unable to locate element: {"method":"id","selector":"loginLink"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.35.528161 (5b82f2d2aae0ca24b877009200ced9065a772e73),platform=Windows NT 10.0.17134 x86_64)
+TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:60625/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
   ----> System.Net.WebException : Unable to connect to the remote server
-  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:61368 -> --TearDown   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)   at MVCAppTest.Controllers.UITest.TestCases.UITest.Cleanup() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\TestCases\UITest.cs:line 54--WebException   at System.Net.HttpWebRequest.GetResponse()   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)--SocketException   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)</pre></td>
+  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:60625 ->    at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)   at MVCAppTest.Controllers.UITest.PageObjects.HomePage.home(String name) in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\PageObjects\SimianTest.cs:line 35   at MVCAppTest.Controllers.UITest.TestCases.WUITest.Can_Navigate_To_Login() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\TestCases\WUITest.cs:line 72--TearDown   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)   at MVCAppTest.Controllers.UITest.TestCases.UITest.Cleanup() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\TestCases\UITest.cs:line 54--WebException   at System.Net.HttpWebRequest.GetResponse()   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)--SocketException   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)</pre></td>
                             <td class='test-features '></td>
                         </tr>
                         
                                     </table>
                                 </div>
                                 <div  class='fixture-footer'>
-                                    <span  alt='Fixture started at time' title='Fixture started at time' class='startedAt'><i class='mdi-device-access-time'></i>71.667</span>
+                                    <span  alt='Fixture started at time' title='Fixture started at time' class='startedAt'><i class='mdi-device-access-time'></i>29.395</span>
                                     <span style='display:none;' alt='Fixture ended at time' title='Fixture ended at time' class='endedAt'><i class='mdi-device-access-time'></i><!--%FIXTUREENDEDAT%--></span>
                                 </div>
                             </div>
@@ -577,7 +583,7 @@
                                     </table>
                                 </div>
                                 <div  class='fixture-footer'>
-                                    <span  alt='Fixture started at time' title='Fixture started at time' class='startedAt'><i class='mdi-device-access-time'></i>0.004</span>
+                                    <span  alt='Fixture started at time' title='Fixture started at time' class='startedAt'><i class='mdi-device-access-time'></i>0.007</span>
                                     <span style='display:none;' alt='Fixture ended at time' title='Fixture ended at time' class='endedAt'><i class='mdi-device-access-time'></i><!--%FIXTUREENDEDAT%--></span>
                                 </div>
                             </div>
@@ -595,19 +601,19 @@
                                         <tr>
                             <td>TestResult File</td><td>..\UnitTestResults\TestResult.xml</td>
                         </tr><tr>
-                            <td>Last Run</td><td>22 Jun 2018 18:41</td>
+                            <td>Last Run</td><td>13 Mar 2019 19:04</td>
                         </tr><tr>
-                            <td>Duration</td><td>71.758 ms</td>
+                            <td>Duration</td><td>29.553 ms</td>
                         </tr><tr>
                             <td>User</td><td>H265456</td>
                         </tr><tr>
                             <td>User Domain</td><td>GLOBAL</td>
                         </tr><tr>
-                            <td>Machine Name</td><td>IE11LTB81XTC2</td>
+                            <td>Machine Name</td><td>IE4LLTB81XTC2</td>
                         </tr><tr>
                             <td>Platform</td><td>Win32NT</td>
                         </tr><tr>
-                            <td>Os Version</td><td>Microsoft Windows NT 10.0.10586.0</td>
+                            <td>Os Version</td><td>Microsoft Windows NT 10.0.17134.0</td>
                         </tr><tr>
                             <td>Clr Version</td><td>4.0.30319.42000</td>
                         </tr><tr>
@@ -630,7 +636,7 @@
                             <div id='modal2' class='modal'>
                                 <div class='modal-content'>
                                     <h4>Console Log</h4>
-                                    [2018.06.22 18:41:36][Info] Skipping ..\UnitTestResults\.gitkeep.txt. It is not of a known test runner type.<br />[2018.06.22 18:41:36][Info] The file ..\UnitTestResults\TestResult.xml contains NUnit test results<br />[2018.06.22 18:41:36][Info] Number of tests: 4<br />[2018.06.22 18:41:36][Info] Processing root and test-suite elements...<br />[2018.06.22 18:41:36][Info] Building fixture blocks...<br />
+                                    [2019.03.13 19:04:44][Info] Skipping ..\UnitTestResults\.gitkeep.txt. It is not of a known test runner type.<br />[2019.03.13 19:04:44][Info] The file ..\UnitTestResults\TestResult.xml contains NUnit test results<br />[2019.03.13 19:04:44][Info] Number of tests: 4<br />[2019.03.13 19:04:44][Info] Processing root and test-suite elements...<br />[2019.03.13 19:04:44][Info] Building fixture blocks...<br />
                                 </div>
                                 <div class='modal-footer'>
                                     <a href='#!' class='modal-action modal-close waves-effect waves-green btn-flat'>Close</a>

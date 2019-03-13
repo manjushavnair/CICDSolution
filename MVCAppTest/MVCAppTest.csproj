@@ -43,10 +43,7 @@
     <JMeterTestsDirectory>$(IntegrationTestsDirectory)JMeterTests\</JMeterTestsDirectory>
     <TestResultsDirectory>..\IntegrationTests\JMeterTestResults\test.jtl</TestResultsDirectory>
     <TestResultsLogDirectory>..\IntegrationTests\JMeterTestLog\</TestResultsLogDirectory>
-    
     <TestReportDirectory>..\IntegrationTests\JMeterReport</TestReportDirectory>
-    
-    
     <JMeterToolPath>..\ExternalTools\apache-jmeter-2.6\bin\jmeter.bat</JMeterToolPath>
   </PropertyGroup>
   <PropertyGroup>
@@ -369,7 +366,7 @@
       <Assemblies Include="$(MSBuildStartupDirectory)\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools\*.dll" />
     </ItemGroup>
     <ItemGroup>
-      <MySourceItems Include="..\MVCAppTest\bin\Debug\MVCAppTest.dll;..\MVCAppTest\bin\Debug\MVCAppTest.pdb;" />      
+      <MySourceItems Include="..\MVCAppTest\bin\Debug\MVCAppTest.dll;..\MVCAppTest\bin\Debug\MVCAppTest.pdb;" />
     </ItemGroup>
     <Message Text="*** NUnit tests starting ..Creating Items" />
     <CreateItem Include="@(MySourceItems)">
@@ -382,19 +379,12 @@
     <Message Text=" MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
     
     -->
-    
-      <Message Text=" MySourceItems = $(MySourceItems)" />
-  
-    
-     <Message Text=" TestAssembly = $(TestAssembly)" />
-     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
-   
+    <Message Text=" MySourceItems = $(MySourceItems)" />
+    <Message Text=" TestAssembly = $(TestAssembly)" />
+    <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
     <Message Text=" NUnitResultsFile = $(NUnitResultsFile)" />
     <NUnit3 Assemblies="@(TestAssembly)" ToolPath="..\MVCApp\packages\NUnit.ConsoleRunner.3.8.0\tools" ContinueOnError="false" OutputXmlFile="$(NUnitResultsFile)" />
-    
-    
   </Target>
-  
   <Target Name="TestResultsReport" DependsOnTargets="Test">
     <Message Text="TestResultsReport in Test Reportunit Calling ,Creating unit testing report  ReportUnit.exe ..\$(NUnitResultsFolder) $(MSBuildStartupDirectory)\UnitTestReport" Importance="high" />
     <Exec Command="..\MVCApp\packages\ReportUnit.1.2.1\tools\ReportUnit.exe &quot;..\$(NUnitResultsFolder)&quot; &quot;..\UnitTestReport&quot;" />
@@ -416,22 +406,17 @@
     <ReportGenerator ReportFiles="$(MSBuildStartupDirectory)\$(CodeCoverageResultsFolder)\*.xml" TargetDirectory="$(CodeCoverageReportFolder)" ReportTypes="html" SourceDirectories="$(SourceDirectories)" HistoryDirectory="$(CoverageHistoryDirectory)" AssemblyFilters="+Include;-Excluded" VerbosityLevel="Verbose" />
     <Message Text="Coverage report has been generated: @(CodeCoverageReportFolder) " />
   </Target>
-   
-  
-   <Target Name="AnalyzeWithFxCop">
-      <ItemGroup>
-        <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
-        <ProjectsToAnalyze Include="..\MVCAppTest\MVCAppTest.csproj" />
-      </ItemGroup>
-      <Message  Importance="high" Text="AnalyzeWithFxCop generated 1%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll" />
-      
-      <ItemGroup>
-        <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\Debug\%(ProjectsToAnalyze.Filename).dll')"/> 
-        </ItemGroup>
-      <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(FxCopReportFolder)\FxCopReport.html" Rules="..\ExternalTools\fxcop\Rules" FxCopPath="..\ExternalTools\fxcop\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="..\ExternalTools\fxcop\Xml\FxCopReport.xsl" DependencyDirectories="$(&#xD;&#xA;Directory)" />
-    </Target>
-    
-   
+  <Target Name="AnalyzeWithFxCop">
+    <ItemGroup>
+      <ProjectsToAnalyze Include="..\MVCApp\MVCApp.csproj" />
+      <ProjectsToAnalyze Include="..\MVCAppTest\MVCAppTest.csproj" />
+    </ItemGroup>
+    <Message Importance="high" Text="AnalyzeWithFxCop generated 1%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\$(Configuration)\%(ProjectsToAnalyze.Filename).dll" />
+    <ItemGroup>
+      <AssembliesToAnalyze Include="%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\Debug\%(ProjectsToAnalyze.Filename).dll" Condition=" Exists('%(ProjectsToAnalyze.RootDir)%(ProjectsToAnalyze.Directory)bin\Debug\%(ProjectsToAnalyze.Filename).dll')" />
+    </ItemGroup>
+    <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(AssembliesToAnalyze)" OutputFile="$(FxCopReportFolder)\FxCopReport.html" Rules="..\ExternalTools\fxcop\Rules" FxCopPath="..\ExternalTools\fxcop\FxCopCmd.exe" ShowSummary="true" LogToConsole="false" ReportXsl="..\ExternalTools\fxcop\Xml\FxCopReport.xsl" DependencyDirectories="$(&#xD;&#xA;Directory)" />
+  </Target>
   <!-- Generates Apidoc -->
   <Target Name="ApiDoc">
     <Message Importance="high" Text="Starting the ApiDoc in Test ###########" />
@@ -445,11 +430,8 @@
   </Target>
   <Target Name="InitSonar">
     <Message Text="Starting the InitSonar in Test ###########" Importance="high" />
-   <Exec Command="SonarQube.Scanner.MSBuild.exe  /k:mvctest1 /n:mvctest /v:1.0 /d:sonar.host.url=http://localhost:9000 " />
-
-
-   </Target>
-  
+    <Exec Command="SonarQube.Scanner.MSBuild.exe  /k:mvctest1 /n:mvctest /v:1.0 /d:sonar.host.url=http://localhost:9000 " />
+  </Target>
   <Target Name="AnalyzeWithSonar">
     <Message Text="Starting the AnalyzeWithSonar in Test ###########" Importance="high" />
     <ItemGroup>
@@ -467,10 +449,8 @@
       <SonarConnectionParameters Condition=" $(SonarProfile) != '' ">$(SonarConnectionParameters) /d:sonar.profile="$(SonarProfile)"</SonarConnectionParameters>
     </PropertyGroup>
     <Message Text="Starting Sonar " Importance="high" />
-     <Exec Command="SonarQube.Scanner.MSBuild.exe end" />
+    <Exec Command="SonarQube.Scanner.MSBuild.exe end" />
   </Target>
-  
-  
   <Target Name="RunSpecs">
     <Message Importance="high" Text="Starting the RunSpecs in Test ###########" />
     <PropertyGroup>
@@ -490,8 +470,6 @@
     <Message Text="Starting the BeforeRunJMeterTests in JMeterTestsDirectory $(JMeterTestsDirectory)" Importance="high" />
     <Message Text="Starting the BeforeRunJMeterTests in JMeterTestProjects Fullpath %(JMeterTestProjects.FullPath)" Importance="high" />
   </Target>
-  
-  
   <Target Name="CoreRunJMeterTests" Inputs="..\IntegrationTests\JMeterTests\jmetertest.jmx" Outputs="AlwaysExecute">
     <Message Text="Starting the CoreRunJMeterTests in Test $(BaseDirectory)" Importance="high" />
     <Message Text="Starting the CoreRunJMeterTests in Test $(IntegrationTestsDirectory)" Importance="high" />
@@ -514,14 +492,10 @@
     <Message Text="$(JMeterToolPath) -n -t $(IntegrationTestsDirectory)JMeterTests\jmetertest.jmx -l $(JMeterTestOutputFileLocation) -j  $(JMeterTestLogFileLocation) -L jmeter.util=DEBUG   " Importance="high" />
     <Message Text="  Jmeter test completed " Importance="high" />
   </Target>
-  
-<Target Name="JMeterTestReports"  >
-<Message Text=" Jmeter test report creations completed $(JMeterToolPath) -g $(JMeterTestOutputFileLocation) -o $(JMeterTestReportFileLocation)"  Importance="high" />
-
+  <Target Name="JMeterTestReports">
+    <Message Text=" Jmeter test report creations completed $(JMeterToolPath) -g $(JMeterTestOutputFileLocation) -o $(JMeterTestReportFileLocation)" Importance="high" />
     <Exec Command="$(JMeterToolPath) -g $(JMeterTestOutputFileLocation) -o $(JMeterTestReportFileLocation)  " ContinueOnError="false" />
-	
-</Target>
-  
+  </Target>
   <Target Name="BeforeBuild">
     <!-- Remove obj folder -->
     <Message Importance="High" Text="BeforeBuild Test :: BaseIntermediateOutputPath dir is $(BaseIntermediateOutputPath)" />
@@ -529,25 +503,18 @@
     <!-- Remove bin folder -->
     <Message Importance="High" Text="BeforeBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
     <RemoveDir Directories="$(BaseOutputPath)" />
-    
-  <!--  <CallTarget Targets="InitSonar" />-->
-
+    <!--  <CallTarget Targets="InitSonar" />-->
   </Target>
   <Target Name="AfterBuild">
-		<Message Importance="High" Text="AfterBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
-		<Message Text="AfterBuild called " Importance="high" />
-		<CallTarget Targets="ApiDoc" />
-
-
-
-		<CallTarget Targets="AnalyzeWithFxCop" />
-		<CallTarget Targets="CodeDuplicated" />
-		<CallTarget Targets="CodeCoverageReport" />		 
-		<CallTarget Targets="RunJMeterTests" />
-		<!--  <CallTarget Targets="AnalyzeWithSonar" /> 
+    <Message Importance="High" Text="AfterBuild Test :: BaseOutputPath dir is $(BaseOutputPath)" />
+    <Message Text="AfterBuild called " Importance="high" />
+    <CallTarget Targets="ApiDoc" />
+    <CallTarget Targets="AnalyzeWithFxCop" />
+    <CallTarget Targets="CodeDuplicated" />
+    <CallTarget Targets="CodeCoverageReport" />
+    <CallTarget Targets="RunJMeterTests" />
+    <!--  <CallTarget Targets="AnalyzeWithSonar" /> 
 		 <CallTarget Targets="JMeterTestReports" /> -->
-
-    
   </Target>
   <Import Project="..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\MVCApp\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>

@@ -1,42 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\bin\Debug\MVCAppTest.dll" total="4" errors="2" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2018-06-22" time="13:10:22">
-  <environment nunit-version="3.6.0.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.10586.0" platform="Win32NT" cwd="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest" machine-name="IE11LTB81XTC2" user="H265456" user-domain="GLOBAL" />
+<test-results name="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\bin\Debug\MVCAppTest.dll" total="4" errors="2" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2019-03-13" time="13:34:01">
+  <environment nunit-version="3.6.0.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.17134.0" platform="Win32NT" cwd="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest" machine-name="IE4LLTB81XTC2" user="H265456" user-domain="GLOBAL" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\bin\Debug\MVCAppTest.dll" executed="True" result="Failure" success="False" time="71.758" asserts="2">
+  <test-suite type="Assembly" name="C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\bin\Debug\MVCAppTest.dll" executed="True" result="Failure" success="False" time="29.553" asserts="0">
     <properties>
-      <property name="_PID" value="37440" />
-      <property name="_APPDOMAIN" value="domain-" />
+      <property name="_PID" value="19008" />
+      <property name="_APPDOMAIN" value="domain-38943145-MVCAppTest.dll" />
     </properties>
     <failure>
       <message><![CDATA[One or more child tests had errors]]></message>
       <stack-trace />
     </failure>
     <results>
-      <test-suite type="TestSuite" name="MVCAppTest" executed="True" result="Failure" success="False" time="71.735" asserts="2">
+      <test-suite type="TestSuite" name="MVCAppTest" executed="True" result="Failure" success="False" time="29.513" asserts="0">
         <failure>
           <message><![CDATA[One or more child tests had errors]]></message>
           <stack-trace />
         </failure>
         <results>
-          <test-suite type="TestSuite" name="Controllers" executed="True" result="Failure" success="False" time="71.730" asserts="2">
+          <test-suite type="TestSuite" name="Controllers" executed="True" result="Failure" success="False" time="29.503" asserts="0">
             <failure>
               <message><![CDATA[One or more child tests had errors]]></message>
               <stack-trace />
             </failure>
             <results>
-              <test-suite type="TestFixture" name="RegisterControllerTests(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;)" executed="True" result="Success" success="True" time="0.053" asserts="0">
+              <test-suite type="TestFixture" name="RegisterControllerTests(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;)" executed="True" result="Success" success="True" time="0.087" asserts="0">
                 <results>
-                  <test-case name="MVCAppTest.Controllers.RegisterControllerTests(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;).UserAddTest" executed="True" result="Success" success="True" time="0.039" asserts="0" />
+                  <test-case name="MVCAppTest.Controllers.RegisterControllerTests(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;).UserAddTest" executed="True" result="Success" success="True" time="0.066" asserts="0" />
                 </results>
               </test-suite>
-              <test-suite type="TestSuite" name="UITest" executed="True" result="Failure" success="False" time="71.730" asserts="2">
+              <test-suite type="TestSuite" name="UITest" executed="True" result="Failure" success="False" time="29.501" asserts="0">
                 <failure>
                   <message><![CDATA[One or more child tests had errors]]></message>
                   <stack-trace />
                 </failure>
                 <results>
-                  <test-suite type="TestSuite" name="TestCases" executed="True" result="Failure" success="False" time="71.730" asserts="2">
+                  <test-suite type="TestSuite" name="TestCases" executed="True" result="Failure" success="False" time="29.499" asserts="0">
                     <failure>
                       <message><![CDATA[One or more child tests had errors]]></message>
                       <stack-trace />
@@ -45,18 +45,26 @@
                       <test-suite type="TestFixture" name="UITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 10&quot;)" executed="True" result="Success" success="True" time="0.000" asserts="0">
                         <results />
                       </test-suite>
-                      <test-suite type="TestFixture" name="WUITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;)" executed="True" result="Failure" success="False" time="71.667" asserts="2">
+                      <test-suite type="TestFixture" name="WUITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;)" executed="True" result="Failure" success="False" time="29.395" asserts="0">
                         <failure>
                           <message><![CDATA[One or more child tests had errors]]></message>
                           <stack-trace />
                         </failure>
                         <results>
-                          <test-case name="MVCAppTest.Controllers.UITest.TestCases.WUITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;).Can_Navigate_To_GoToHome" executed="True" result="Error" success="False" time="32.295" asserts="1">
+                          <test-case name="MVCAppTest.Controllers.UITest.TestCases.WUITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;).Can_Navigate_To_GoToHome" executed="True" result="Error" success="False" time="16.966" asserts="0">
                             <failure>
-                              <message><![CDATA[TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:61252/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
+                              <message><![CDATA[OpenQA.Selenium.NoSuchElementException : no such element: Unable to locate element: {"method":"id","selector":"loginLink"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.35.528161 (5b82f2d2aae0ca24b877009200ced9065a772e73),platform=Windows NT 10.0.17134 x86_64)
+TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:60585/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
   ----> System.Net.WebException : Unable to connect to the remote server
-  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:61252]]></message>
-                              <stack-trace><![CDATA[--TearDown
+  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:60585]]></message>
+                              <stack-trace><![CDATA[   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at MVCAppTest.Controllers.UITest.PageObjects.HomePage.get_Name() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\PageObjects\SimianTest.cs:line 22
+   at MVCAppTest.Controllers.UITest.TestCases.WUITest.Can_Navigate_To_GoToHome() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\TestCases\WUITest.cs:line 51
+--TearDown
    at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
    at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
    at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
@@ -70,12 +78,20 @@
    at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)]]></stack-trace>
                             </failure>
                           </test-case>
-                          <test-case name="MVCAppTest.Controllers.UITest.TestCases.WUITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;).Can_Navigate_To_Login" executed="True" result="Error" success="False" time="39.371" asserts="1">
+                          <test-case name="MVCAppTest.Controllers.UITest.TestCases.WUITest(&quot;chrome&quot;,&quot;63&quot;,&quot;Windows 7&quot;).Can_Navigate_To_Login" executed="True" result="Error" success="False" time="12.429" asserts="0">
                             <failure>
-                              <message><![CDATA[TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:61368/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
+                              <message><![CDATA[OpenQA.Selenium.NoSuchElementException : no such element: Unable to locate element: {"method":"id","selector":"loginLink"}
+  (Session info: chrome=72.0.3626.121)
+  (Driver info: chromedriver=2.35.528161 (5b82f2d2aae0ca24b877009200ced9065a772e73),platform=Windows NT 10.0.17134 x86_64)
+TearDown : OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:60625/session//window. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
   ----> System.Net.WebException : Unable to connect to the remote server
-  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:61368]]></message>
-                              <stack-trace><![CDATA[--TearDown
+  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:60625]]></message>
+                              <stack-trace><![CDATA[   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)
+   at MVCAppTest.Controllers.UITest.PageObjects.HomePage.home(String name) in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\PageObjects\SimianTest.cs:line 35
+   at MVCAppTest.Controllers.UITest.TestCases.WUITest.Can_Navigate_To_Login() in C:\Projects\ASP.NET-master\CICDSolution\MVCAppTest\Controllers\UITest\TestCases\WUITest.cs:line 72
+--TearDown
    at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)
    at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)
    at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute)
@@ -97,9 +113,9 @@
               </test-suite>
             </results>
           </test-suite>
-          <test-suite type="TestFixture" name="TestClass" executed="True" result="Success" success="True" time="0.004" asserts="0">
+          <test-suite type="TestFixture" name="TestClass" executed="True" result="Success" success="True" time="0.007" asserts="0">
             <results>
-              <test-case name="MVCAppTest.TestClass.TestMethod" executed="True" result="Success" success="True" time="0.004" asserts="0">
+              <test-case name="MVCAppTest.TestClass.TestMethod" executed="True" result="Success" success="True" time="0.007" asserts="0">
                 <reason>
                   <message><![CDATA[Your first passing test]]></message>
                 </reason>
@@ -109,5 +125,14 @@
         </results>
       </test-suite>
     </results>
+  </test-suite>
+  <test-suite type="Unknown" name="MVCAppTest.pdb" executed="True" result="Failure" success="False" time="0.000" asserts="">
+    <properties>
+      <property name="_SKIPREASON" value="File type is not supported" />
+    </properties>
+    <reason>
+      <message><![CDATA[File type is not supported]]></message>
+    </reason>
+    <results />
   </test-suite>
 </test-results>
