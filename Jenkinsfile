@@ -129,7 +129,7 @@ stages {
    stage ('Notification') {
     steps {
        mail from: "manjusha.saju@honeywell.com",
-            to: "DL_HPS_IPE@HoneywellProd.onmicrosoft.com",
+            to: "manjusha.saju@honeywell.com",
             subject: "  build complete",
             body: "Jenkins job ${env.JOB_NAME} - build ${env.BUILD_NUMBER} complete"
             }
@@ -159,7 +159,7 @@ post {
 		     from: 'manjusha.saju@honeywell.com',
 		     replyTo: 'manjusha.saju@honeywell.com',
 		     subject: "${JOB_NAME} ${BUILD_NUMBER} succeeded",
-		     to: "DL_HPS_IPE@HoneywellProd.onmicrosoft.com")
+		     to: "manjusha.saju@honeywell.com")
  	    }
 	//}
 	}
